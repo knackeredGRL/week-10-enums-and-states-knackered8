@@ -20,6 +20,7 @@ public:
 	void handleInput(float dt) override;
 	void update(float dt) override;
 	void render();
+	void renderPause();
 
 private:
 	// Default variables for level class.
@@ -27,5 +28,7 @@ private:
 	GameObject* ball;
 	sf::Texture* texture;
 	sf::Vector2f velocity;
+	sf::Text m_pauseText;
+	sf::Font m_pauseFont;
 	
 };
