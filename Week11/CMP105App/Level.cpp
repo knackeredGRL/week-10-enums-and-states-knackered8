@@ -26,11 +26,11 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 	ball->setTexture(texture);
 	ball->setSize(sf::Vector2f(100, 100));
 	ball->setOrigin(sf::Vector2f(50, 50));
-	ball->setPosition(sf::Vector2f(100, 100));
+	ball->setPosition(m_startingPos);
 
 	// initialise game objects
 	audio->addMusic("sfx/cantina.ogg", "cantina");
-	velocity = sf::Vector2f(1, -1);
+	velocity = m_startingVelocity;
 
 	if (!m_pauseFont.loadFromFile("font/arial.ttf"))
 	{
@@ -51,6 +51,21 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 	m_pauseText.setPosition(window->getSize().x/2.f, window->getSize().y / 2.f);
 
 
+	m_timesStartedText.setFont(m_pauseFont); // font is a sf::Font
+
+	// set the string to display
+	m_timesStartedText.setString(std::to_string(timesStarted));
+
+	// set the character size
+	m_timesStartedText.setCharacterSize(24); // in pixels, not points!
+
+	// set the color
+	m_timesStartedText.setFillColor(sf::Color::Green);
+
+	m_timesStartedText.setPosition(sf::Vector2f(200,300));
+
+
+
 	
 }
 
@@ -64,7 +79,9 @@ void Level::handleInput(float dt)
 {
 	if (input->isPressed(sf::Keyboard::Space))
 	{
+		onBegin();
 		gameState->setCurrentState(State::MENU);
+		onEnd();
 	}
 
 	switch (gameState->getCurrentState())
@@ -81,6 +98,7 @@ void Level::handleInput(float dt)
 	{
 		if (input->isPressed(sf::Keyboard::P))
 		{
+
 			gameState->setCurrentState(State::LEVEL);
 		}
 		break;
@@ -93,7 +111,7 @@ void Level::handleInput(float dt)
 // Update game objects
 void Level::update(float dt)
 {
-	
+	m_timesStartedText.setString(std::to_string(timesStarted));
 
 	ball->move(velocity * 100.f * dt);
 
@@ -119,6 +137,7 @@ void Level::render()
 
 
 	window->draw(*ball);
+	window->draw(m_timesStartedText);
 
 	if (gameState->getCurrentState() == State::PAUSE)
 	{
@@ -136,4 +155,21 @@ void Level::renderPause()
 	window->draw(m_pauseText);
 	
 }
+
+void Level::onBegin()
+{
+	timesStarted += 1;
+	ball->setPosition(m_startingPos);
+	velocity = m_startingVelocity;
+
+
+}
+
+void Level::onEnd()
+{
+
+
+
+}
+
 
