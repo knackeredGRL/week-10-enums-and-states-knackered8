@@ -19,6 +19,7 @@ public:
 	sf::Vector2f CalculateGravity(const float& dt, sf::Vector2f& stepVelocity, sf::Vector2f& gravity);
 	sf::Vector2f CalculateVelocity(const float& dt, sf::Vector2f& direction);
 	void JumpCheck(const int& jumping);
+	void JumpTimer(const float& dt);
 
 
 private:
@@ -31,7 +32,7 @@ private:
 	bool m_isJumping = false;
 	sf::Vector2f m_jumpVector;
 	int m_jumping = 0;
-
+	float m_jumpTimer = 0;
 
 };
 

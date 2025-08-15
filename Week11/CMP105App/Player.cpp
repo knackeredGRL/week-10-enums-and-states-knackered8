@@ -8,8 +8,8 @@ Player::Player(Input* in, sf::RenderTexture* rt)
 
 	// initialise gravity value (gravity 9.8, 200 scale, 200 p/s this will need to be uniform)
 	m_scale = 200.0f;
-	m_gravity = sf::Vector2f(0, 9.8f) * m_scale;
-	m_jumpVector = sf::Vector2f(0, -4.0f) * m_scale;
+	m_gravity = sf::Vector2f(0, 1.8f) * m_scale;
+	m_jumpVector = sf::Vector2f(0, -2.0f) * m_scale;
 
 }
 
@@ -29,6 +29,11 @@ void Player::update(float dt)
 	
 	m_collisionBox = getGlobalBounds();
 	CheckGroundCollision(dt);
+
+
+
+	JumpTimer(dt);
+
 
 }
 
@@ -98,6 +103,14 @@ void Player::CheckGroundCollision(const float& dt)
 		m_stepVelocity = sf::Vector2f(0, 0);
 		m_isJumping = false;
 	}
+
+	if (m_collisionBox.contains(m_current_position.x, 0))
+	{
+		m_stepVelocity = sf::Vector2f(0, 10);
+
+		m_isJumping = true;
+	}
+	
 }
 
 sf::Vector2f Player::CalculateGravity(const float& dt, sf::Vector2f& stepVelocity, sf::Vector2f& gravity)
@@ -133,4 +146,14 @@ void Player::JumpCheck(const int& jumping)
 
 	m_stepVelocity = m_jumpVector;
 	m_isJumping = true;
+}
+
+void Player::JumpTimer(const float& dt)
+{
+	m_jumpTimer += dt;
+	if (m_jumpTimer >= 1)
+	{
+		m_isJumping = false;
+		m_jumpTimer = 0;
+	}
 }
