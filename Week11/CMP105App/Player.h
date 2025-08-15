@@ -18,7 +18,7 @@ public:
 	void CheckGroundCollision(const float& dt);
 	sf::Vector2f CalculateGravity(const float& dt, sf::Vector2f& stepVelocity, sf::Vector2f& gravity);
 	sf::Vector2f CalculateVelocity(const float& dt, sf::Vector2f& direction);
-
+	void JumpCheck(const int& jumping);
 
 
 private:

@@ -22,29 +22,12 @@ void Player::update(float dt)
 	CheckScreenCollision(dt);
 
 	setWindowSize();
-
-
 	m_current_position = getPosition();
 
-
-	
-	//m_direction = VectorHelper::normalise(m_direction);
-
-	//m_velocity = (m_direction * m_speed);
-	
-
-	// Apply gravity force, increasing velocity
-	// Move shape by new velocity
-	//sf::Vector2f m_gravity_power = m_stepVelocity * dt + 0.5f * m_gravity * dt * dt; //ut + 1/2at^2
-	//m_stepVelocity += m_gravity * dt; // v = u + at note the += is not =
-	
 	setPosition(getPosition() + (CalculateVelocity(dt,m_direction) * dt) + CalculateGravity(dt,m_stepVelocity,m_gravity));
 	// Check for collision with bottom of window
 	
 	m_collisionBox = getGlobalBounds();
-
-	
-
 	CheckGroundCollision(dt);
 
 }
@@ -55,15 +38,7 @@ void Player::handleInput(float dt)
 	m_direction.x = (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) * -1) + sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
 	m_jumping = (sf::Keyboard::isKeyPressed(sf::Keyboard::W));
 	// Jump, check if already jumping
-	if (m_jumping == 1)
-	{
-		if (!m_isJumping)
-		{
-			m_stepVelocity = m_jumpVector;
-			m_isJumping = true;
-		}
-	}
-
+	JumpCheck(m_jumping);
 }
 
 void Player::render()
@@ -142,4 +117,20 @@ sf::Vector2f Player::CalculateVelocity(const float& dt, sf::Vector2f& direction)
 	m_velocity = (direction * m_speed);
 
 	return m_velocity;
+}
+
+void Player::JumpCheck(const int& jumping)
+{
+	if (jumping != 1)
+	{
+		return;
+	}
+
+	if (m_isJumping)
+	{
+		return;
+	}
+
+	m_stepVelocity = m_jumpVector;
+	m_isJumping = true;
 }
