@@ -31,17 +31,20 @@ public:
 	void setAlive(bool b) { m_alive = b; };
 
 	// For sprite collision, set collider box, get collider box, and dedicated virtual function for collision response
-	bool isCollider() { return collider; };
-	void setCollider(bool b) { collider = b; };
+	bool isCollider() { return m_collider; };
+	void setCollider(bool b) { m_collider = b; };
 	sf::FloatRect getCollisionBox();
-	void setCollisionBox(float x, float y, float width, float height) { collisionBox = sf::FloatRect(x, y, width, height); };
-	void setCollisionBox(sf::FloatRect fr) { collisionBox = fr; };
+	void setCollisionBox(float x, float y, float width, float height) { m_collisionBox = sf::FloatRect(x, y, width, height); };
+	void setCollisionBox(sf::FloatRect fr) { m_collisionBox = fr; };
 	virtual void collisionResponse(GameObject* collider);
 
 	// Set the input component
 	void setInput(Input* in) { input = in; };
 	void setWindow(sf::RenderWindow* win) { window = win; };
 	void setRenderTexture(sf::RenderTexture* rt) { m_rt = rt; };
+	void setWindowSize();
+
+	sf::Vector2f GetStartPosition();
 
 protected:
 	// Sprite properties
@@ -49,8 +52,8 @@ protected:
 	bool m_alive;
 
 	// Collision vars
-	sf::FloatRect collisionBox;
-	bool collider;
+	sf::FloatRect m_collisionBox;
+	bool m_collider;
 
 	// input component
 	Input* input;
@@ -62,5 +65,7 @@ protected:
 	sf::Vector2f m_start_position = sf::Vector2f(100, 100);
 	sf::Vector2f m_start_size = sf::Vector2f(100, 100);
 	sf::Vector2f m_current_position = sf::Vector2f(100, 100);
+	float m_screen_width = 0;//window.getSize().x;
+	float m_screen_height = 0;//window.getSize().y;
 
 };

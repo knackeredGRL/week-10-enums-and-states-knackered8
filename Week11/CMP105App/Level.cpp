@@ -124,6 +124,7 @@ void Level::update(float dt)
 	else if (ball->getPosition().y <= 0)
 		m_velocity.y = -m_velocity.y;
 
+	m_player->handleInput(dt);
 	m_player->update(dt);
 
 
@@ -163,6 +164,8 @@ void Level::onBegin()
 {
 	m_timesStarted += 1;
 	ball->setPosition(m_startingPos);
+	m_player->setPosition(m_player->GetStartPosition());
+	m_player->SetStepVelocity(sf::Vector2f(0, 0));
 	m_velocity = m_startingVelocity;
 
 

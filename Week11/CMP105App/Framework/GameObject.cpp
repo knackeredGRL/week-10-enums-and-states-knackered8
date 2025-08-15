@@ -43,7 +43,7 @@ sf::Vector2f GameObject::getVelocity()
 // Returns collision box + position, giving the collision box in the correct position
 sf::FloatRect GameObject::getCollisionBox() {
 	
-	return sf::FloatRect(collisionBox.left + getPosition().x - getOrigin().x, collisionBox.top + getPosition().y - getOrigin().y, collisionBox.width, collisionBox.height); 
+	return sf::FloatRect(m_collisionBox.left + getPosition().x - getOrigin().x, m_collisionBox.top + getPosition().y - getOrigin().y, m_collisionBox.width, m_collisionBox.height); 
 }
 
 // Reponse function, what the sprite does based on collision
@@ -52,4 +52,17 @@ sf::FloatRect GameObject::getCollisionBox() {
 // e.g. checking sprite type (world, enemy, bullet etc) so response is based on that.
 void GameObject::collisionResponse(GameObject * collider)
 {
+}
+
+void GameObject::setWindowSize()
+{
+	m_screen_width = m_rt->getSize().x;
+	m_screen_height = m_rt->getSize().y;
+
+
+}
+
+sf::Vector2f GameObject::GetStartPosition()
+{
+	return m_start_position;
 }
