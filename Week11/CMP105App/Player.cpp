@@ -9,6 +9,7 @@ Player::Player(Input* in, sf::RenderTexture* rt)
 	// initialise gravity value (gravity 9.8, 200 scale, 200 p/s this will need to be uniform)
 	m_scale = 200.0f;
 	m_gravity = sf::Vector2f(0, 9.8f) * m_scale;
+	m_jumpVector = sf::Vector2f(0, -4.0f) * m_scale;
 
 }
 
@@ -18,43 +19,50 @@ Player::~Player()
 
 void Player::update(float dt)
 {
+	CheckScreenCollision(dt);
+
 	setWindowSize();
 
 
 	m_current_position = getPosition();
 
 
-	//m_direction = sf::Vector2f(2, 3);
-	m_direction = VectorHelper::normalise(m_direction);
-	m_velocity = (m_direction * m_speed);
-	//setPosition(getPosition() + (m_velocity * dt));
+	
+	//m_direction = VectorHelper::normalise(m_direction);
+
+	//m_velocity = (m_direction * m_speed);
+	
 
 	// Apply gravity force, increasing velocity
-// Move shape by new velocity
-	sf::Vector2f m_gravity_power = m_stepVelocity * dt + 0.5f * m_gravity * dt * dt; //ut + 1/2at^2
-	m_stepVelocity += m_gravity * dt; // v = u + at note the += is not =
-	//setPosition(getPosition() + m_gravity_power);
-	setPosition(getPosition() + (m_velocity * dt) + m_gravity_power);
+	// Move shape by new velocity
+	//sf::Vector2f m_gravity_power = m_stepVelocity * dt + 0.5f * m_gravity * dt * dt; //ut + 1/2at^2
+	//m_stepVelocity += m_gravity * dt; // v = u + at note the += is not =
+	
+	setPosition(getPosition() + (CalculateVelocity(dt,m_direction) * dt) + CalculateGravity(dt,m_stepVelocity,m_gravity));
 	// Check for collision with bottom of window
-	if (getPosition().y >= 1080)
-	{
-		//setPosition(getPosition().x, 1080);
-		//m_stepVelocity = sf::Vector2f(0, 0);
-	}
-
-
+	
 	m_collisionBox = getGlobalBounds();
 
-	CheckScreenCollision(dt);
+	
+
+	CheckGroundCollision(dt);
+
 }
 
 void Player::handleInput(float dt)
 {
-	/*m_direction.y = (input->isPressed(sf::Keyboard::Up) * -1) + input->isPressed(sf::Keyboard::Down);
-	m_direction.x = (input->isPressed(sf::Keyboard::Left) * -1) + input->isPressed(sf::Keyboard::Right);*/
-
-	//m_direction.y = (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) * -1) + sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
+	
 	m_direction.x = (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) * -1) + sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
+	m_jumping = (sf::Keyboard::isKeyPressed(sf::Keyboard::W));
+	// Jump, check if already jumping
+	if (m_jumping == 1)
+	{
+		if (!m_isJumping)
+		{
+			m_stepVelocity = m_jumpVector;
+			m_isJumping = true;
+		}
+	}
 
 }
 
@@ -90,6 +98,7 @@ void Player::CheckScreenCollision(const float& dt)
 	{
 
 		m_direction.x = (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) * 0) + sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
+		
 
 	}
 	if (m_collisionBox.contains(m_screen_width, m_current_position.y))
@@ -98,24 +107,39 @@ void Player::CheckScreenCollision(const float& dt)
 		m_direction.x = (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) * -1) + (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) * 0);
 
 	}
-	if (m_collisionBox.contains(m_current_position.x, m_screen_height))
-	{
-		m_stepVelocity = sf::Vector2f(0, 0);
-		m_direction.y = (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) * -1) + (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) * 0);
-
-
-	}
-	if (m_collisionBox.contains(m_current_position.x, 0))
-	{
-
-		m_direction.y = (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) * 0) + sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
-
-
-	}
+	
 
 }
 
 void Player::SetStepVelocity(const sf::Vector2f& sv)
 {
 	m_stepVelocity = sv;
+}
+
+void Player::CheckGroundCollision(const float& dt)
+{
+	if (m_collisionBox.contains(m_current_position.x, m_screen_height))
+	{
+		m_stepVelocity = sf::Vector2f(0, 0);
+		m_isJumping = false;
+	}
+}
+
+sf::Vector2f Player::CalculateGravity(const float& dt, sf::Vector2f& stepVelocity, sf::Vector2f& gravity)
+{
+	// Apply gravity force, increasing velocity
+	// Move shape by new velocity
+	sf::Vector2f m_gravity_power = stepVelocity * dt + 0.5f * gravity * dt * dt; //ut + 1/2at^2
+	stepVelocity += gravity * dt; // v = u + at note the += is not =
+
+	return m_gravity_power;
+}
+
+sf::Vector2f Player::CalculateVelocity(const float& dt, sf::Vector2f& direction)
+{
+	direction = VectorHelper::normalise(direction);
+
+	m_velocity = (direction * m_speed);
+
+	return m_velocity;
 }
