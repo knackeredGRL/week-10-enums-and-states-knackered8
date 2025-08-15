@@ -10,7 +10,7 @@ public:
 	void update(float dt );
 	void handleInput(float dt);
 	void render();
-	void Setup();
+	
 
 	//stops player from moving past screen coordinatesS
 	void CheckScreenCollision(const float& dt);

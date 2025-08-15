@@ -56,8 +56,8 @@ void GameObject::collisionResponse(GameObject * collider)
 
 void GameObject::setWindowSize()
 {
-	m_screen_width = m_rt->getSize().x;
-	m_screen_height = m_rt->getSize().y;
+	//m_screen_width = m_rt->getSize().x;
+	//m_screen_height = m_rt->getSize().y;
 
 
 }
@@ -65,4 +65,30 @@ void GameObject::setWindowSize()
 sf::Vector2f GameObject::GetStartPosition()
 {
 	return m_start_position;
+}
+
+void GameObject::Setup(const std::string& texturePath, const bool& isSpriteSheet, const sf::IntRect& intRect, const sf::Vector2f& pos, const sf::Vector2f& size)
+{
+	m_texture = new sf::Texture();
+
+	if (!m_texture->loadFromFile(texturePath))
+	{
+		std::cout << "player texture didnt load correctly" << std::endl;
+	}
+
+
+	setSize(size);
+	setOrigin(size / 2.f);
+	setTexture(m_texture);
+
+	if (isSpriteSheet)
+	{
+		setTextureRect(intRect);
+	}
+
+	setPosition(pos);
+
+
+
+
 }

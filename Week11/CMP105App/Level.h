@@ -10,6 +10,7 @@
 #include <iostream>
 
 class Player;
+class ShootPointer;
 
 
 
@@ -39,6 +40,8 @@ private:
 	const sf::Vector2f m_startingVelocity = sf::Vector2f(1, -1);
 	int m_timesStarted = 0;
 	Player* m_player;
+
+	ShootPointer* m_shootPointer;
 	
 
 };

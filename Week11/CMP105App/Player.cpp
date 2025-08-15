@@ -4,7 +4,10 @@ Player::Player(Input* in, sf::RenderTexture* rt)
 {
 	setInput(in);
 	setRenderTexture(rt);
-	Setup();
+	Setup("gfx/gobsmithSpriteSheet.png",true,sf::IntRect(0,0,32,32), sf::Vector2f(100,100), sf::Vector2f(100, 100));
+
+
+
 
 	// initialise gravity value (gravity 9.8, 200 scale, 200 p/s this will need to be uniform)
 	m_scale = 200.0f;
@@ -40,7 +43,7 @@ void Player::update(float dt)
 void Player::handleInput(float dt)
 {
 	
-	m_direction.x = (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) * -1) + sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
+	m_direction.x = (sf::Keyboard::isKeyPressed(sf::Keyboard::A) * -1) + sf::Keyboard::isKeyPressed(sf::Keyboard::D);
 	m_jumping = (sf::Keyboard::isKeyPressed(sf::Keyboard::W));
 	// Jump, check if already jumping
 	JumpCheck(m_jumping);
@@ -50,26 +53,7 @@ void Player::render()
 {
 }
 
-void Player::Setup()
-{
-	m_texture = new sf::Texture();
 
-	if (!m_texture->loadFromFile("gfx/gobsmithSpriteSheet.png"))
-	{
-		std::cout << "player texture didnt load correctly" << std::endl;
-	}
-
-
-	setSize(m_start_size);
-	setOrigin(m_start_size / 2.f);
-	setTexture(m_texture);
-	setTextureRect(sf::IntRect(0, 0, 32, 32));
-	setPosition(m_start_position);
-	
-
-
-
-}
 
 void Player::CheckScreenCollision(const float& dt)
 {

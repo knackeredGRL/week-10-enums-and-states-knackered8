@@ -1,5 +1,6 @@
 #include "Level.h"
 #include "Player.h"
+#include "ShootPointer.h"
 
 Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud, sf::RenderTexture* renderTexture)
 {
@@ -67,7 +68,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 
 	m_player = new Player(in,m_rt);
 
-
+	m_shootPointer = new ShootPointer(in, m_rt, m_player);
 }
 
 Level::~Level()
@@ -115,18 +116,18 @@ void Level::update(float dt)
 
 	ball->move(m_velocity * 100.f * dt);
 
-	if (ball->getPosition().x >= 1200)
+	if (ball->getPosition().x >= 1920)
 		m_velocity.x = -m_velocity.x;
 	else if (ball->getPosition().x <= 0)
 		m_velocity.x = -m_velocity.x;
-	else if (ball->getPosition().y >= 675)
+	else if (ball->getPosition().y >= 1080)
 		m_velocity.y = -m_velocity.y;
 	else if (ball->getPosition().y <= 0)
 		m_velocity.y = -m_velocity.y;
 
 	m_player->handleInput(dt);
 	m_player->update(dt);
-
+	m_shootPointer->update(dt);
 
 
 }
@@ -142,7 +143,7 @@ void Level::render()
 	m_rt->draw(*m_player);
 	m_rt->draw(*ball);
 	m_rt->draw(m_timesStartedText);
-
+	m_rt->draw(*m_shootPointer);
 	if (gameState->getCurrentState() == State::PAUSE)
 	{
 		renderPause();

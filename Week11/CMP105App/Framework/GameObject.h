@@ -46,6 +46,8 @@ public:
 
 	sf::Vector2f GetStartPosition();
 
+	void Setup(const std::string& texturePath,const bool& isSpriteSheet, const sf::IntRect& intRect, const sf::Vector2f& pos, const sf::Vector2f& size);
+
 protected:
 	// Sprite properties
 	sf::Vector2f m_velocity;
@@ -65,7 +67,7 @@ protected:
 	sf::Vector2f m_start_position = sf::Vector2f(100, 100);
 	sf::Vector2f m_start_size = sf::Vector2f(100, 100);
 	sf::Vector2f m_current_position = sf::Vector2f(100, 100);
-	float m_screen_width = 0;//window.getSize().x;
-	float m_screen_height = 0;//window.getSize().y;
+	float m_screen_width = 1920;//window.getSize().x;
+	float m_screen_height = 1080;//window.getSize().y;
 
 };
