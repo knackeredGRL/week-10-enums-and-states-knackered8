@@ -1,11 +1,12 @@
 #include "Level.h"
 
-Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud)
+Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud, sf::RenderTexture* renderTexture)
 {
 	window = hwnd;
 	input = in;
 	gameState = gs;
 	audio = aud;
+	m_rt = renderTexture;
 
 
 	//gameState = new GameState();
@@ -15,21 +16,21 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 
 	//gameState->setCurrentState(State::MENU);
 
-	texture = new sf::Texture();
+	m_texture = new sf::Texture();
 
-	if (!texture->loadFromFile("gfx/Beach_Ball.png"))
+	if (!m_texture->loadFromFile("gfx/Beach_Ball.png"))
 	{
 		// error...
 	}
 
-	ball->setTexture(texture);
+	ball->setTexture(m_texture);
 	ball->setSize(sf::Vector2f(100, 100));
 	ball->setOrigin(sf::Vector2f(50, 50));
 	ball->setPosition(m_startingPos);
 
 	// initialise game objects
 	audio->addMusic("sfx/cantina.ogg", "cantina");
-	velocity = m_startingVelocity;
+	m_velocity = m_startingVelocity;
 
 	if (!m_pauseFont.loadFromFile("font/arial.ttf"))
 	{
@@ -53,7 +54,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 	m_timesStartedText.setFont(m_pauseFont); // font is a sf::Font
 
 	// set the string to display
-	m_timesStartedText.setString(std::to_string(timesStarted));
+	m_timesStartedText.setString(std::to_string(m_timesStarted));
 
 	// set the character size
 	m_timesStartedText.setCharacterSize(24); // in pixels, not points!
@@ -109,18 +110,18 @@ void Level::handleInput(float dt)
 // Update game objects
 void Level::update(float dt)
 {
-	m_timesStartedText.setString(std::to_string(timesStarted));
+	m_timesStartedText.setString(std::to_string(m_timesStarted));
 
-	ball->move(velocity * 100.f * dt);
+	ball->move(m_velocity * 100.f * dt);
 
 	if (ball->getPosition().x >= 1200)
-		velocity.x = -velocity.x;
+		m_velocity.x = -m_velocity.x;
 	else if (ball->getPosition().x <= 0)
-		velocity.x = -velocity.x;
+		m_velocity.x = -m_velocity.x;
 	else if (ball->getPosition().y >= 675)
-		velocity.y = -velocity.y;
+		m_velocity.y = -m_velocity.y;
 	else if (ball->getPosition().y <= 0)
-		velocity.y = -velocity.y;
+		m_velocity.y = -m_velocity.y;
 
 
 }
@@ -134,8 +135,8 @@ void Level::render()
 
 
 
-	window->draw(*ball);
-	window->draw(m_timesStartedText);
+	m_rt->draw(*ball);
+	m_rt->draw(m_timesStartedText);
 
 	if (gameState->getCurrentState() == State::PAUSE)
 	{
@@ -150,15 +151,15 @@ void Level::renderPause()
 {
 
 
-	window->draw(m_pauseText);
+	m_rt->draw(m_pauseText);
 
 }
 
 void Level::onBegin()
 {
-	timesStarted += 1;
+	m_timesStarted += 1;
 	ball->setPosition(m_startingPos);
-	velocity = m_startingVelocity;
+	m_velocity = m_startingVelocity;
 
 
 }

@@ -27,5 +27,7 @@ protected:
 	Input* input;
 	GameState* gameState;
 	AudioManager* audio;
+	sf::RenderTexture* m_rt;
+
 };
 

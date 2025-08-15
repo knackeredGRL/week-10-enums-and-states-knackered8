@@ -1,11 +1,12 @@
 #include "MainMenu.h"
 #include <iostream>
 
-MainMenu::MainMenu(sf::RenderWindow* rw, Input* in, GameState* gs)
+MainMenu::MainMenu(sf::RenderWindow* rw, Input* in, GameState* gs, sf::RenderTexture* renderTexture)
 {
 	window = rw;
 	gameState = gs;
 	input = in;
+	m_rt = renderTexture;
 
 	if (!m_mmFont.loadFromFile("font/arial.ttf"))
 	{
@@ -47,7 +48,7 @@ void MainMenu::render()
 {
 	beginDraw();
 
-	window->draw(m_mmText);
+	m_rt->draw(m_mmText);
 
 	endDraw();
 

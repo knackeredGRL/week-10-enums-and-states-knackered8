@@ -7,7 +7,7 @@ class GameState;
 class MainMenu : public BaseLevel
 {
 public:
-	MainMenu(sf::RenderWindow* rw, Input* in, GameState* gs);
+	MainMenu(sf::RenderWindow* rw, Input* in, GameState* gs, sf::RenderTexture* renderTexture);
 	~MainMenu();
 
 	void update(float dt);
@@ -21,7 +21,7 @@ private:
 	sf::Font m_mmFont;
 	sf::Text m_mmText;
 	//GameState* gS;
-
+	
 
 
 };
