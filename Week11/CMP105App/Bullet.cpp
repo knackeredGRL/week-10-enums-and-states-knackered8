@@ -1,0 +1,34 @@
+#include "Bullet.h"
+
+Bullet::Bullet(Input* in, sf::RenderTexture* rt, sf::Vector2f direction, sf::Vector2f position)
+{
+	setInput(in);
+	setRenderTexture(rt);
+	Setup("gfx/Mushroom.png", false, sf::IntRect(0, 0, 32, 32), sf::Vector2f(100, 100), sf::Vector2f(16, 16));
+
+	m_direction = direction;
+	m_current_position = position;
+
+	setPosition(m_current_position);
+
+}
+
+Bullet::~Bullet()
+{
+}
+
+void Bullet::update(float dt)
+{
+	m_direction = VectorHelper::normalise(m_direction);
+	m_velocity = (m_direction * m_speed);
+	setPosition(getPosition() +(m_velocity* dt));
+
+}
+
+void Bullet::handleInput(float dt)
+{
+}
+
+void Bullet::render()
+{
+}

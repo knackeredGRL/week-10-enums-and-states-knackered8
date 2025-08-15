@@ -1,5 +1,6 @@
 #include "ShootPointer.h"
 #include "Player.h"
+#include "Bullet.h"
 
 ShootPointer::ShootPointer(Input* in, sf::RenderTexture* rt, Player* pl)
 {
@@ -37,18 +38,33 @@ void ShootPointer::update(float dt)
 		//setPosition(m_tempPos);
 	}
 
+
+
+	for (int i = 0; i < m_bullet_vector.size(); i++)
+	{
+		m_bullet_vector[i]->update(dt);
+	}
+
 }
 
 void ShootPointer::handleInput(float dt)
 {
+	if (input->isLeftMousePressed())
+	{
+		m_bullet = new Bullet(input, m_rt, m_direction,getPosition());
+		m_bullet_vector.push_back(m_bullet);
 
+	}
 
 
 }
 
 void ShootPointer::render()
 {
-
+	for (int i = 0; i < m_bullet_vector.size(); i++)
+	{
+		m_rt->draw(*m_bullet_vector[i]);
+	}
 
 }
 

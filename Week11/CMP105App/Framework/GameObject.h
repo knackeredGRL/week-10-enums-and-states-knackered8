@@ -69,5 +69,5 @@ protected:
 	sf::Vector2f m_current_position = sf::Vector2f(100, 100);
 	float m_screen_width = 1920;//window.getSize().x;
 	float m_screen_height = 1080;//window.getSize().y;
-
+	sf::Vector2f m_direction = sf::Vector2f(0, 0);
 };

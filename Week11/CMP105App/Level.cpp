@@ -107,6 +107,9 @@ void Level::handleInput(float dt)
 	}
 
 	}
+
+	m_shootPointer->handleInput(dt);
+
 }
 
 // Update game objects
@@ -128,7 +131,7 @@ void Level::update(float dt)
 	m_player->handleInput(dt);
 	m_player->update(dt);
 	m_shootPointer->update(dt);
-
+	
 
 }
 
@@ -144,6 +147,7 @@ void Level::render()
 	m_rt->draw(*ball);
 	m_rt->draw(m_timesStartedText);
 	m_rt->draw(*m_shootPointer);
+	m_shootPointer->render();
 	if (gameState->getCurrentState() == State::PAUSE)
 	{
 		renderPause();
