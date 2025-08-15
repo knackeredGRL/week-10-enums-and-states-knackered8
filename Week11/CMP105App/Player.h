@@ -1,6 +1,7 @@
 #pragma once
 #include "Framework/GameObject.h"
 
+
 class Player :public GameObject
 {
 public:
@@ -13,8 +14,9 @@ public:
 
 
 private:
-	float speed = 10;
-	float acceleration = 2.f;
+	float m_speed = 10;
+	float m_acceleration = 2.f;
+	sf::Vector2f m_direction = sf::Vector2f(0, 0);
 
 };
 

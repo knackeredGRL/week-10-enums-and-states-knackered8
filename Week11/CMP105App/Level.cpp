@@ -124,6 +124,9 @@ void Level::update(float dt)
 	else if (ball->getPosition().y <= 0)
 		m_velocity.y = -m_velocity.y;
 
+	m_player->update(dt);
+
+
 
 }
 

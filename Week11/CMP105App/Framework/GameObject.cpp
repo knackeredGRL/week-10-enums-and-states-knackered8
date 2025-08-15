@@ -26,18 +26,18 @@ void GameObject::update(float dt)
 // Sets the velocity of the sprite
 void GameObject::setVelocity(sf::Vector2f vel)
 {
-	velocity = vel;
+	m_velocity = vel;
 }
 void GameObject::setVelocity(float vx, float vy)
 {
-	velocity.x = vx;
-	velocity.y = vy;
+	m_velocity.x = vx;
+	m_velocity.y = vy;
 }
 
 // get sprite velocity
 sf::Vector2f GameObject::getVelocity()
 {
-	return velocity;
+	return m_velocity;
 }
 
 // Returns collision box + position, giving the collision box in the correct position

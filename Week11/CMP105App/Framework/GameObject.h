@@ -8,6 +8,8 @@
 #include "SFML\Graphics.hpp"
 #include "Input.h"
 #include "iostream"
+#include "VectorHelper.h"
+
 
 class GameObject : public sf::RectangleShape
 {
@@ -25,8 +27,8 @@ public:
 	sf::Vector2f getVelocity();
 
 	// Sprite state
-	bool isAlive() { return alive; };
-	void setAlive(bool b) { alive = b; };
+	bool isAlive() { return m_alive; };
+	void setAlive(bool b) { m_alive = b; };
 
 	// For sprite collision, set collider box, get collider box, and dedicated virtual function for collision response
 	bool isCollider() { return collider; };
@@ -43,8 +45,8 @@ public:
 
 protected:
 	// Sprite properties
-	sf::Vector2f velocity;
-	bool alive;
+	sf::Vector2f m_velocity;
+	bool m_alive;
 
 	// Collision vars
 	sf::FloatRect collisionBox;

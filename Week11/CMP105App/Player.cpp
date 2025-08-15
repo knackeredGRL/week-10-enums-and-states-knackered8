@@ -15,6 +15,15 @@ Player::~Player()
 
 void Player::update(float dt)
 {
+
+	m_current_position = getPosition();
+
+	m_acceleration = 2.f;
+	m_direction = sf::Vector2f(2, 3);
+	m_direction = VectorHelper::normalise(m_direction);
+	m_velocity += (m_direction * m_acceleration) * dt;
+	setPosition(getPosition() + (m_velocity * dt));
+
 }
 
 void Player::handleInput(float dt)
