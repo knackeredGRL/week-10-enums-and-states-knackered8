@@ -4,16 +4,17 @@
 class Player :public GameObject
 {
 public:
-	Player();
+	Player(Input* in, sf::RenderTexture* rt);
 	~Player();
 	void update(float dt );
 	void handleInput(float dt);
-	void Render();
-
+	void render();
+	void Setup();
 
 
 private:
-
+	float speed = 10;
+	float acceleration = 2.f;
 
 };
 

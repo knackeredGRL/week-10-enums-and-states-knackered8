@@ -7,6 +7,7 @@
 #pragma once
 #include "SFML\Graphics.hpp"
 #include "Input.h"
+#include "iostream"
 
 class GameObject : public sf::RectangleShape
 {
@@ -38,6 +39,7 @@ public:
 	// Set the input component
 	void setInput(Input* in) { input = in; };
 	void setWindow(sf::RenderWindow* win) { window = win; };
+	void setRenderTexture(sf::RenderTexture* rt) { m_rt = rt; };
 
 protected:
 	// Sprite properties
@@ -51,4 +53,12 @@ protected:
 	// input component
 	Input* input;
 	sf::RenderWindow* window;
+	sf::RenderTexture* m_rt;
+
+	sf::Texture* m_texture = nullptr;
+
+	sf::Vector2f m_start_position = sf::Vector2f(100, 100);
+	sf::Vector2f m_start_size = sf::Vector2f(100, 100);
+	sf::Vector2f m_current_position = sf::Vector2f(100, 100);
+
 };

@@ -9,6 +9,9 @@
 #include <string>
 #include <iostream>
 
+class Player;
+
+
 
 class Level : public BaseLevel{
 public:
@@ -35,6 +38,7 @@ private:
 	const sf::Vector2f m_startingPos = sf::Vector2f(100, 100);
 	const sf::Vector2f m_startingVelocity = sf::Vector2f(1, -1);
 	int m_timesStarted = 0;
+	Player* m_player;
 	
 
 };

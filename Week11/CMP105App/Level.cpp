@@ -1,4 +1,5 @@
 #include "Level.h"
+#include "Player.h"
 
 Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud, sf::RenderTexture* renderTexture)
 {
@@ -64,7 +65,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 
 	m_timesStartedText.setPosition(sf::Vector2f(200, 300));
 
-
+	m_player = new Player(in,m_rt);
 
 
 }
@@ -134,7 +135,7 @@ void Level::render()
 
 
 
-
+	m_rt->draw(*m_player);
 	m_rt->draw(*ball);
 	m_rt->draw(m_timesStartedText);
 
