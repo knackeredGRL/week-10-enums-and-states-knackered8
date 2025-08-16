@@ -55,6 +55,9 @@ void Bullet::update(float dt)
 		setAlive(false);
 	}
 
+
+	m_collisionBox = getGlobalBounds();
+
 }
 
 void Bullet::handleInput(float dt)
@@ -69,11 +72,6 @@ void Bullet::render()
 void Bullet::ResetBullet()
 {
 	m_lifeTimer = 0;
-
-
 }
 
-void Bullet::SetDirection(const sf::Vector2f& direction)
-{
-	m_direction = direction;
-}
+

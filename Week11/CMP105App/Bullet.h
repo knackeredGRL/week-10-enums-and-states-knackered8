@@ -17,7 +17,7 @@ public:
 
 	void ResetBullet();
 
-	void SetDirection(const sf::Vector2f& direction);
+	
 
 
 private:

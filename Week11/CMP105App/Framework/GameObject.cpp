@@ -97,3 +97,9 @@ void GameObject::Setup(const std::string& texturePath, const bool& isSpriteSheet
 
 
 }
+
+
+void GameObject::SetDirection(const sf::Vector2f& direction)
+{
+	m_direction = direction;
+}

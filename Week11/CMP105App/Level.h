@@ -9,6 +9,8 @@
 #include <string>
 #include <iostream>
 
+#include "Enemy.h"
+
 class Player;
 class ShootPointer;
 class BulletManager;
@@ -44,6 +46,7 @@ private:
 
 	ShootPointer* m_shootPointer;
 	BulletManager* m_bulletManager;
+	Enemy* m_enemy;
 	
 
 };

@@ -48,6 +48,8 @@ public:
 
 	const sf::Vector2f& GetDirection();
 
+	void SetDirection(const sf::Vector2f& direction);
+
 	void Setup(const std::string& texturePath,const bool& isSpriteSheet, const sf::IntRect& intRect, const sf::Vector2f& pos, const sf::Vector2f& size);
 
 protected:

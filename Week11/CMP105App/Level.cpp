@@ -72,6 +72,9 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 	m_shootPointer = new ShootPointer(in, m_rt, m_player);
 
 	m_bulletManager = new BulletManager(in, m_rt, m_shootPointer);
+
+
+	m_enemy = new Enemy(in, m_rt,sf::Vector2f(0,0), sf::Vector2f(500, 500), m_texture);
 }
 
 Level::~Level()
@@ -137,6 +140,8 @@ void Level::update(float dt)
 	m_shootPointer->update(dt);
 	
 	m_bulletManager->update(dt);
+
+	m_enemy->update(dt);
 }
 
 // Render level
@@ -151,6 +156,7 @@ void Level::render()
 	m_rt->draw(*ball);
 	m_rt->draw(m_timesStartedText);
 	m_rt->draw(*m_shootPointer);
+	m_rt->draw(*m_enemy);
 	m_bulletManager->RenderBullets();
 	m_shootPointer->render();
 	if (gameState->getCurrentState() == State::PAUSE)
