@@ -45,6 +45,16 @@ void Bullet::update(float dt)
 	m_velocity = (m_direction * m_speed);
 	setPosition(getPosition() +(m_velocity* dt));
 
+	if (isAlive())
+	{
+		m_lifeTimer += dt;
+	}
+
+	if (m_lifeTimer >= 2)
+	{
+		setAlive(false);
+	}
+
 }
 
 void Bullet::handleInput(float dt)
@@ -58,7 +68,7 @@ void Bullet::render()
 
 void Bullet::ResetBullet()
 {
-
+	m_lifeTimer = 0;
 
 
 }

@@ -22,5 +22,7 @@ public:
 
 private:
 	float m_speed = 500;
+	float m_lifeTimer = 0;
+	bool m_lifeTimerEnded = false;
 };
 

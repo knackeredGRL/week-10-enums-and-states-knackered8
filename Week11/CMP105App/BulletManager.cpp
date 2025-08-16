@@ -67,6 +67,18 @@ void BulletManager::update(float dt)
 		}
 	}
 
+	if (!canShoot)
+	{
+		m_shootTimer += dt;
+	}
+
+	if (m_shootTimer >= 1)
+	{
+		canShoot = true;
+		m_shootTimer = 0;
+	}
+
+
 }
 
 void BulletManager::RenderBullets()
@@ -78,9 +90,10 @@ void BulletManager::RenderBullets()
 
 void BulletManager::handleInput(float dt)
 {
-	if (input->isLeftMousePressed())
+	if (input->isLeftMousePressed() &&canShoot)
 	{
 		GetBullet(m_shootPointer->GetDirection(), m_shootPointer->getPosition());
+		canShoot = false;
 		//m_bullet = new Bullet(input, m_rt, m_direction, getPosition());
 		//m_bullet_vector.push_back(m_bullet);
 
@@ -91,4 +104,14 @@ void BulletManager::handleInput(float dt)
 
 void BulletManager::render()
 {
+}
+
+void BulletManager::ResetAllBullets()
+{
+	for (int i = m_active.size() - 1; i >= 0; i--)
+	{
+		m_active.erase(m_active.begin() + i);
+	}
+
+
 }

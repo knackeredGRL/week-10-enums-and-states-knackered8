@@ -29,6 +29,9 @@ public:
 
 	void render();
 
+	void ResetAllBullets();
+
+	void SetCanShoot(const bool& shoot) { canShoot = shoot; }
 
 
 
@@ -39,7 +42,7 @@ private:
 	sf::Texture* m_texture;
 	ShootPointer* m_shootPointer;
 	sf::Vector2f m_direction;
-
-
+	float m_shootTimer = 0;
+	bool canShoot = true;
 };
 

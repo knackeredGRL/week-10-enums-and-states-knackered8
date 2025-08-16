@@ -176,6 +176,8 @@ void Level::onBegin()
 	ball->setPosition(m_startingPos);
 	m_player->setPosition(m_player->GetStartPosition());
 	m_player->SetStepVelocity(sf::Vector2f(0, 0));
+	m_bulletManager->ResetAllBullets();
+	m_bulletManager->SetCanShoot(true);
 	m_velocity = m_startingVelocity;
 
 
