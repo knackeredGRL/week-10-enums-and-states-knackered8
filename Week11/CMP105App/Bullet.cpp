@@ -9,6 +9,8 @@ Bullet::Bullet(Input* in, sf::RenderTexture* rt, sf::Vector2f direction, sf::Vec
 	setSize(sf::Vector2f(16, 16));
 	setOrigin(sf::Vector2f(16, 16) / 2.f);
 	setTexture(texture);
+	m_texture = texture;
+	
 
 	//if (isSpriteSheet)
 	//{
@@ -51,6 +53,7 @@ void Bullet::handleInput(float dt)
 
 void Bullet::render()
 {
+	m_rt->draw(*this);
 }
 
 void Bullet::ResetBullet()
