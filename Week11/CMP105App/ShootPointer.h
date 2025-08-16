@@ -23,8 +23,8 @@ private:
 	
 	Player* m_playerPTR = nullptr;
 	sf::Vector2f m_tempPos;
-	Bullet* m_bullet;
-	std::vector<Bullet*> m_bullet_vector;
+	//Bullet* m_bullet;
+	//std::vector<Bullet*> m_bullet_vector;
 
 };
 

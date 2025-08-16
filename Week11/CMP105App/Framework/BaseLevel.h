@@ -28,6 +28,7 @@ protected:
 	GameState* gameState;
 	AudioManager* audio;
 	sf::RenderTexture* m_rt;
+	
 
 };
 

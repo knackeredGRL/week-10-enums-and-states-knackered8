@@ -11,6 +11,7 @@
 
 class Player;
 class ShootPointer;
+class BulletManager;
 
 
 
@@ -42,6 +43,7 @@ private:
 	Player* m_player;
 
 	ShootPointer* m_shootPointer;
+	BulletManager* m_bulletManager;
 	
 
 };

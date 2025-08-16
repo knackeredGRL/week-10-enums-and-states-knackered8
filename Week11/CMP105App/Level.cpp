@@ -1,6 +1,7 @@
 #include "Level.h"
 #include "Player.h"
 #include "ShootPointer.h"
+#include "BulletManager.h"
 
 Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud, sf::RenderTexture* renderTexture)
 {
@@ -69,6 +70,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 	m_player = new Player(in,m_rt);
 
 	m_shootPointer = new ShootPointer(in, m_rt, m_player);
+
+	m_bulletManager = new BulletManager(in, m_rt, m_shootPointer);
 }
 
 Level::~Level()
@@ -109,6 +112,7 @@ void Level::handleInput(float dt)
 	}
 
 	m_shootPointer->handleInput(dt);
+	m_bulletManager->handleInput(dt);
 
 }
 
@@ -132,7 +136,7 @@ void Level::update(float dt)
 	m_player->update(dt);
 	m_shootPointer->update(dt);
 	
-
+	m_bulletManager->update(dt);
 }
 
 // Render level
@@ -147,6 +151,7 @@ void Level::render()
 	m_rt->draw(*ball);
 	m_rt->draw(m_timesStartedText);
 	m_rt->draw(*m_shootPointer);
+	m_bulletManager->RenderBullets();
 	m_shootPointer->render();
 	if (gameState->getCurrentState() == State::PAUSE)
 	{

@@ -67,6 +67,11 @@ sf::Vector2f GameObject::GetStartPosition()
 	return m_start_position;
 }
 
+const sf::Vector2f& GameObject::GetDirection()
+{
+	return m_direction;
+}
+
 void GameObject::Setup(const std::string& texturePath, const bool& isSpriteSheet, const sf::IntRect& intRect, const sf::Vector2f& pos, const sf::Vector2f& size)
 {
 	m_texture = new sf::Texture();
