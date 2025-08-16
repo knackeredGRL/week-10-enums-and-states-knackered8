@@ -40,9 +40,9 @@ Enemy* EnemyManager::GetEnemy(const sf::Vector2f& direction, const sf::Vector2f&
 	for (int i = 0; i < m_poolSizeMax; i++)
 	{
 
-		m_randomNum = rand() % 1000;
+		//m_randomNum = rand() % 1000;
 
-		int randNum = rand() % (max - min + 1) + min;
+		//int randNum = rand() % (max - min + 1) + min;
 
 		if (m_pool[i].isAlive())
 		{
@@ -122,8 +122,8 @@ void EnemyManager::ResetAllEnemys()
 
 }
 
-int& EnemyManager::CalculateRandom(int& random)
-{
-	// TODO: insert return statement here
-}
+//int& EnemyManager::CalculateRandom(int& random)
+//{
+//	
+//}
 

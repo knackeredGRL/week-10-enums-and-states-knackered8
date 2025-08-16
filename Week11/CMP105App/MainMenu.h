@@ -2,6 +2,8 @@
 #include "SFML\Graphics.hpp"
 #include "Framework//BaseLevel.h"
 class GameState;
+class MenuButton;
+class Controls;
 
 
 class MainMenu : public BaseLevel
@@ -16,11 +18,18 @@ public:
 
 	void render();
 
+	void onBegin();
+	void onEnd();
+
 
 private:
 	sf::Font m_mmFont;
 	sf::Text m_mmText;
-	//GameState* gS;
+	MenuButton* m_startButton;
+	MenuButton* m_controlsButton;
+	MenuButton* m_exitButton;
+	Controls* m_controls;
+	//GameState* gameState;
 	
 
 

@@ -33,7 +33,7 @@ public:
 
 	void SetCanSpawn(const bool& spawn) { canSpawn = spawn; }
 
-	CalculateRandom(int& random);
+	int& CalculateRandom(int& random);
 
 private:
 	std::vector<Enemy*> m_active;

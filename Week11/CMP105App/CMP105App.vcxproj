@@ -160,7 +160,9 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="Controls.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="Framework\Animation.cpp" />
     <ClCompile Include="Framework\AudioManager.cpp" />
     <ClCompile Include="Framework\BaseLevel.cpp" />
@@ -175,6 +177,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ShootPointer.cpp" />
   </ItemGroup>
@@ -186,7 +189,9 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletManager.h" />
     <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="Controls.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="Framework\Animation.h" />
     <ClInclude Include="Framework\AudioManager.h" />
     <ClInclude Include="Framework\BaseLevel.h" />
@@ -200,6 +205,7 @@
     <ClInclude Include="Framework\VectorHelper.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="MenuButton.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ShootPointer.h" />
   </ItemGroup>
