@@ -2,6 +2,8 @@
 #include "Player.h"
 #include "ShootPointer.h"
 #include "BulletManager.h"
+#include "CollisionManager.h"
+
 
 Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud, sf::RenderTexture* renderTexture)
 {
@@ -75,6 +77,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 
 
 	m_enemy = new Enemy(in, m_rt,sf::Vector2f(0,0), sf::Vector2f(500, 500), m_texture);
+
+	m_colManager = new CollisionManager();
 }
 
 Level::~Level()
@@ -142,6 +146,11 @@ void Level::update(float dt)
 	m_bulletManager->update(dt);
 
 	m_enemy->update(dt);
+
+
+
+
+	m_colManager->BulletEnemyCollision(m_bulletManager, m_enemy);
 }
 
 // Render level
