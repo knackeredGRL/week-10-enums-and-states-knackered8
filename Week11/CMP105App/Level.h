@@ -15,6 +15,7 @@ class Player;
 class ShootPointer;
 class BulletManager;
 class CollisionManager;
+class EnemyManager;
 
 
 
@@ -49,6 +50,6 @@ private:
 	BulletManager* m_bulletManager;
 	Enemy* m_enemy;
 	CollisionManager* m_colManager;
-	
+	EnemyManager* m_enemyManager;
 
 };

@@ -42,6 +42,11 @@ Enemy::~Enemy()
 void Enemy::update(float dt)
 {
 	m_collisionBox = getGlobalBounds();
+
+	m_direction = VectorHelper::normalise(m_direction);
+	m_velocity = (m_direction * m_speed);
+	setPosition(getPosition() + (m_velocity * dt));
+
 }
 
 void Enemy::handleInput(float dt)

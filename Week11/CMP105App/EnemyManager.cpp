@@ -40,22 +40,74 @@ Enemy* EnemyManager::GetEnemy(const sf::Vector2f& direction, const sf::Vector2f&
 	for (int i = 0; i < m_poolSizeMax; i++)
 	{
 
-		//m_randomNum = rand() % 1000;
+		m_sideOfScreen = (rand() % 4) + 1;
 
-		//int randNum = rand() % (max - min + 1) + min;
+		switch (m_sideOfScreen)
+		{
+		case(1):
+			m_randomXPos = -10;
+			
+			m_minYPos = 50;
+			m_maxYPos = 980;
+
+			m_randomYPos = (rand() % m_maxYPos) + m_minYPos;
+
+			break;
+		case(2):
+			m_minXPos = 100;
+			m_maxXPos = 1820;
+			m_randomYPos = -10;
+
+			m_randomXPos = (rand() % m_maxXPos) + m_minXPos;
+			break;
+
+		case(3):
+			m_randomXPos = 2020;
+			m_minYPos = 50;
+			m_maxYPos = 980;
+
+			m_randomYPos = (rand() % m_maxYPos) + m_minYPos;
+
+			break;
+
+		case(4):
+			m_minXPos = 100;
+			m_maxXPos = 1820;
+			m_randomYPos = 1180;
+
+			m_randomXPos = (rand() % m_maxXPos) + m_minXPos;
+			break;
+
+
+		}
+
+
+
+		//m_randomXPos = (rand() % m_maxXPos) + m_minXPos;
+		//m_randomYPos = (rand() % m_maxYPos) + m_minYPos;
+		m_randomXDir = rand() % (-1000 - 1000 + 1) + -1000;
+		m_randomYDir = rand() % (-1000 - 1000 + 1) + -1000;
+		
+
+
+
 
 		if (m_pool[i].isAlive())
 		{
 			continue;
 		}
-		m_pool[i].setPosition(pos);
-		m_pool[i].SetDirection(direction);
+
+		
+
+
+		m_pool[i].setPosition(sf::Vector2f(m_randomXPos,m_randomYPos));
+		m_pool[i].SetDirection(sf::Vector2f(m_randomXDir, m_randomYDir));
 		m_pool[i].setAlive(true);
 		m_pool[i].ResetEnemy();
 		m_active.push_back(&m_pool[i]);
 		return &m_pool[i];
 	}
-	m_pool[0].setPosition(pos);
+	m_pool[0].setPosition(sf::Vector2f(m_randomXPos, m_randomYPos));
 	m_pool[0].SetDirection(direction);
 	m_pool[0].ResetEnemy();
 	return &m_pool[0];
@@ -63,6 +115,9 @@ Enemy* EnemyManager::GetEnemy(const sf::Vector2f& direction, const sf::Vector2f&
 
 void EnemyManager::update(float dt)
 {
+	
+
+
 	for (int i = m_active.size() - 1; i >= 0; i--)
 	{
 		m_active[i]->update(dt);
@@ -104,7 +159,10 @@ void EnemyManager::handleInput(float dt)
 		//m_Enemy_vector.push_back(m_Enemy);
 
 	}*/
-
+	if (input->isPressed(sf::Keyboard::X))
+	{
+		GetEnemy(sf::Vector2f(10, 10), sf::Vector2f(10, 10));
+	}
 
 }
 

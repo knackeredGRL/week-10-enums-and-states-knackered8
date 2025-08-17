@@ -43,10 +43,16 @@ private:
 	sf::Vector2f m_direction;
 	float m_spawnTimer = 0;
 	bool canSpawn = true;
-	int m_randomPos = 0;
-	int m_sideOfScreen = 0;
-	int m_randomXPos = 0;
-	int m_randomYPos = 0;
+	int m_randomPos = 1;
+	int m_sideOfScreen = 1;
+	int m_randomXPos = 1;
+	int m_randomYPos = 1;
+	int m_randomXDir = 1;
+	int m_randomYDir = 1;
+	int m_minXPos = 1;
+	int m_maxXPos = 1;
+	int m_minYPos = 1;
+	int m_maxYPos = 1;
 
 };
 
