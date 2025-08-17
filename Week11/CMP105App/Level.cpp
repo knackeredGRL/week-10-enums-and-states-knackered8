@@ -4,7 +4,7 @@
 #include "BulletManager.h"
 #include "CollisionManager.h"
 #include "EnemyManager.h"
-
+#include "UIManager.h"
 
 Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud, sf::RenderTexture* renderTexture)
 {
@@ -24,18 +24,18 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 
 	m_texture = new sf::Texture();
 
-	if (!m_texture->loadFromFile("gfx/Beach_Ball.png"))
-	{
-		// error...
-	}
+	//if (!m_texture->loadFromFile("gfx/Beach_Ball.png"))
+	//{
+	//	// error...
+	//}
 
-	ball->setTexture(m_texture);
-	ball->setSize(sf::Vector2f(100, 100));
-	ball->setOrigin(sf::Vector2f(50, 50));
-	ball->setPosition(m_startingPos);
+	//ball->setTexture(m_texture);
+	//ball->setSize(sf::Vector2f(100, 100));
+	//ball->setOrigin(sf::Vector2f(50, 50));
+	//ball->setPosition(m_startingPos);
 
 	// initialise game objects
-	audio->addMusic("sfx/cantina.ogg", "cantina");
+	/*audio->addMusic("sfx/cantina.ogg", "cantina");*/
 	m_velocity = m_startingVelocity;
 
 	if (!m_pauseFont.loadFromFile("font/arial.ttf"))
@@ -77,11 +77,13 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 	m_bulletManager = new BulletManager(in, m_rt, m_shootPointer);
 
 
-	m_enemy = new Enemy(in, m_rt,sf::Vector2f(0,0), sf::Vector2f(500, 500), m_texture);
+	/*m_enemy = new Enemy(in, m_rt,sf::Vector2f(0,0), sf::Vector2f(500, 500), m_texture);*/
 
 	m_colManager = new CollisionManager();
 
 	m_enemyManager = new EnemyManager(in, m_rt);
+
+	m_uIManager = new UIManager();
 }
 
 Level::~Level()
@@ -132,7 +134,7 @@ void Level::update(float dt)
 {
 	m_timesStartedText.setString(std::to_string(m_timesStarted));
 
-	ball->move(m_velocity * 100.f * dt);
+	/*ball->move(m_velocity * 100.f * dt);
 
 	if (ball->getPosition().x >= 1920)
 		m_velocity.x = -m_velocity.x;
@@ -141,7 +143,7 @@ void Level::update(float dt)
 	else if (ball->getPosition().y >= 1080)
 		m_velocity.y = -m_velocity.y;
 	else if (ball->getPosition().y <= 0)
-		m_velocity.y = -m_velocity.y;
+		m_velocity.y = -m_velocity.y;*/
 
 	m_player->handleInput(dt);
 	m_player->update(dt);
@@ -149,7 +151,7 @@ void Level::update(float dt)
 	
 	m_bulletManager->update(dt);
 
-	m_enemy->update(dt);
+	/*m_enemy->update(dt);*/
 
 
 	m_enemyManager->update(dt);
@@ -175,19 +177,21 @@ void Level::render()
 
 
 	m_rt->draw(*m_player);
-	m_rt->draw(*ball);
-	m_rt->draw(m_timesStartedText);
+	/*m_rt->draw(*ball);
+	m_rt->draw(m_timesStartedText);*/
 	m_rt->draw(*m_shootPointer);
-	m_rt->draw(*m_enemy);
+	/*m_rt->draw(*m_enemy);*/
 	m_bulletManager->RenderBullets();
 	m_shootPointer->render();
 	m_enemyManager->RenderEnemys();
+
+	m_uIManager->Render(m_rt);
 
 	if (gameState->getCurrentState() == State::PAUSE)
 	{
 		renderPause();
 	}
-
+	
 
 	endDraw();
 }
@@ -203,7 +207,7 @@ void Level::renderPause()
 void Level::onBegin()
 {
 	m_timesStarted += 1;
-	ball->setPosition(m_startingPos);
+	/*ball->setPosition(m_startingPos);*/
 	m_player->setPosition(m_player->GetStartPosition());
 	m_player->SetStepVelocity(sf::Vector2f(0, 0));
 	m_bulletManager->ResetAllBullets();

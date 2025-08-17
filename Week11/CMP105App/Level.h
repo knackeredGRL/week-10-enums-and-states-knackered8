@@ -17,6 +17,7 @@ class BulletManager;
 class CollisionManager;
 class EnemyManager;
 #include "GameManager.h"
+class UIManager;
 
 
 
@@ -52,5 +53,6 @@ private:
 	Enemy* m_enemy;
 	CollisionManager* m_colManager;
 	EnemyManager* m_enemyManager;
+	UIManager* m_uIManager;
 
 };
