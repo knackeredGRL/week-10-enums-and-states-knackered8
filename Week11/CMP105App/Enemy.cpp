@@ -6,8 +6,8 @@ Enemy::Enemy(Input* in, sf::RenderTexture* rt, sf::Vector2f direction, sf::Vecto
 	setRenderTexture(rt);
 	//Setup("gfx/Mushroom.png", false, sf::IntRect(0, 0, 32, 32), sf::Vector2f(100, 100), sf::Vector2f(16, 16));
 
-	setSize(sf::Vector2f(32, 32));
-	setOrigin(sf::Vector2f(32, 32) / 2.f);
+	setSize(sf::Vector2f(64, 64));
+	setOrigin(sf::Vector2f(64, 64) / 2.f);
 	setTexture(texture);
 	m_texture = texture;
 
@@ -78,7 +78,7 @@ void Enemy::ResetEnemy()
 //{
 //	// TODO: insert return statement here
 //	return;
-//}
+//
 //
 //void Enemy::OnOutsideBounds()
 //{
