@@ -42,6 +42,7 @@ UIManager::UIManager()
 
 	m_ui.setCharacterSize(100);
 	m_ui.setOrigin(50, 50);
+	m_ui.setFillColor(sf::Color::Black);
 	/*m_ui.setString(std::to_string(3));
 	m_ui.setPosition(1500, 500);
 

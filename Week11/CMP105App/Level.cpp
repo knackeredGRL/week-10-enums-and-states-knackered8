@@ -5,6 +5,7 @@
 #include "CollisionManager.h"
 #include "EnemyManager.h"
 #include "UIManager.h"
+#include "MovingCloud.h"
 
 Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud, sf::RenderTexture* renderTexture)
 {
@@ -88,8 +89,24 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 	m_audioManager = new AudioManager();
 
 	m_audioManager->addSound("sfx/party-balloon-pop-323588.ogg", "pop");
-	
+	//m_audioManager->addMusic("sfx/retro-game-music-245230.ogg", "music");
 
+
+	
+	/*for (int i = 0; i < m_cloudVectorSize; i++)
+	{
+		m_cloudVect.push_back(new MovingCloud());
+	}*/
+	m_cloudVect.push_back(new MovingCloud(in, m_rt, sf::Vector2f(400,200), sf::Vector2f(1700,200), "gfx/BalloonerSpriteSheet.png"));
+
+	m_cloudVect.push_back(new MovingCloud(in, m_rt, sf::Vector2f(400, 200), sf::Vector2f(1400, 500), "gfx/BalloonerSpriteSheet.png"));
+
+	m_cloudVect.push_back(new MovingCloud(in, m_rt, sf::Vector2f(400, 200), sf::Vector2f(900, 350), "gfx/BalloonerSpriteSheet.png"));
+
+	m_cloudVect.push_back(new MovingCloud(in, m_rt, sf::Vector2f(400, 200), sf::Vector2f(300, 700), "gfx/BalloonerSpriteSheet.png"));
+
+	m_cloudVect.push_back(new MovingCloud(in, m_rt, sf::Vector2f(400, 200), sf::Vector2f(1500, 800), "gfx/BalloonerSpriteSheet.png"));
+	
 }
 
 Level::~Level()
@@ -172,6 +189,11 @@ void Level::update(float dt)
 		gameState->setCurrentState(State::MENU);
 		onEnd();
 	}
+
+	for (int i = 0; i < m_cloudVect.size(); i++)
+	{
+		m_cloudVect[i]->update(dt);
+	}
 }
 
 // Render level
@@ -180,7 +202,10 @@ void Level::render()
 	beginDraw();
 	//mm->render();
 
-
+	for (int i = 0; i < m_cloudVect.size(); i++)
+	{
+		m_cloudVect[i]->render();
+	}
 
 	m_rt->draw(*m_player);
 	/*m_rt->draw(*ball);
@@ -192,6 +217,9 @@ void Level::render()
 	m_enemyManager->RenderEnemys();
 
 	m_uIManager->Render(m_rt);
+
+	
+
 
 	if (gameState->getCurrentState() == State::PAUSE)
 	{
@@ -222,9 +250,14 @@ void Level::onBegin()
 	m_enemyManager->ResetAllEnemys();
 	m_enemyManager->SetCanSpawn(true);
 
-
+	m_cloudVect[0]->setPosition(sf::Vector2f(1700, 200));
+	m_cloudVect[1]->setPosition(sf::Vector2f(1400, 500));
+	m_cloudVect[2]->setPosition(sf::Vector2f(900, 350));
+	m_cloudVect[3]->setPosition(sf::Vector2f(300, 700));
+	m_cloudVect[4]->setPosition(sf::Vector2f(1500, 800));
 	GameManager::SetLives(3);
 	GameManager::SetScore(0);
+	//m_audioManager->playMusicbyName("music");
 
 
 }

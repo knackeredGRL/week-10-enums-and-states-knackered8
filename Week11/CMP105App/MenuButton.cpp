@@ -44,7 +44,7 @@ MenuButton::MenuButton(sf::RenderWindow* rw, Input* in, GameState* gs, sf::Rende
 
 
 	m_audioManager->addSound("sfx/click-345983.ogg", "click");
-	
+	m_audioManager->addMusic("sfx/retro-game-music-245230.ogg", "music");
 
 }
 
@@ -63,7 +63,7 @@ void MenuButton::handleInput(float dt)
 		{
 		case ButtonType::Start:
 			gameState->setCurrentState(State::LEVEL);
-
+			m_audioManager->playMusicbyName("music");
 			break;
 
 		case ButtonType::Controls:
@@ -97,7 +97,10 @@ void MenuButton::update(float dt)
 {
 	m_collisionBox = getGlobalBounds();
 
-	
+	if (gameState->getCurrentState() == State::MENU)
+	{
+		m_audioManager->stopAllMusic();
+	}
 
 
 }

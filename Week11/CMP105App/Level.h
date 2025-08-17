@@ -19,6 +19,7 @@ class EnemyManager;
 #include "GameManager.h"
 class UIManager;
 #include "Framework/AudioManager.h"
+class MovingCloud;
 
 
 
@@ -56,4 +57,6 @@ private:
 	EnemyManager* m_enemyManager;
 	UIManager* m_uIManager;
 	AudioManager* m_audioManager;
+	std::vector<MovingCloud*> m_cloudVect;
+	int m_cloudVectorSize = 5;
 };

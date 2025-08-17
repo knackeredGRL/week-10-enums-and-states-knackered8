@@ -1,9 +1,11 @@
 #pragma once
 #include "SFML\Graphics.hpp"
 #include "Framework//BaseLevel.h"
+#include "Framework//GameObject.h"
 class GameState;
 class MenuButton;
 class Controls;
+#include "Framework//AudioManager.h"
 
 
 class MainMenu : public BaseLevel
@@ -29,10 +31,14 @@ private:
 	MenuButton* m_controlsButton;
 	MenuButton* m_exitButton;
 	Controls* m_controls;
-	//GameObject cloud;
+	GameObject cloud;
+	GameObject cloud1;
+	GameObject cloud2;
+	GameObject balloon;
 	sf::Texture m_cloudTexture;
+	sf::Texture m_balloonTexture;
 	//GameState* gameState;
-	
+	AudioManager* m_audioManager;
 
 
 };

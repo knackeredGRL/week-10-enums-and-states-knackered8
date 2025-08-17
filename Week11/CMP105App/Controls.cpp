@@ -19,7 +19,7 @@ Controls::Controls(sf::RenderWindow* rw, Input* in, GameState* gs, sf::RenderTex
 	m_mmText.setFont(m_mmFont); // font is a sf::Font
 
 	// set the string to display
-	m_mmText.setString("Dont fall offscreen, Use W to jump, Use A(Left),\n D(Right) and aim bullets with mouse and left click to fire, \navoid touching balloons with player, shoot balloons with bullets for points");
+	m_mmText.setString("Dont fall offscreen, Use W to jump, Use A(Left),\n D(Right) and aim bullets with mouse and left click to fire, \navoid touching balloons with player, shoot balloons with bullets for points,\n press space to return to main menu");
 
 	// set the character size
 	m_mmText.setCharacterSize(20); // in pixels, not points!
