@@ -61,14 +61,14 @@ void Player::CheckScreenCollision(const float& dt)
 	if (m_collisionBox.contains(0, m_current_position.y))
 	{
 
-		m_direction.x = (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) * 0) + sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
+		m_direction.x = /*(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) * 0) + */sf::Keyboard::isKeyPressed(sf::Keyboard::D);
 		
 
 	}
 	if (m_collisionBox.contains(m_screen_width, m_current_position.y))
 	{
 
-		m_direction.x = (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) * -1) + (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) * 0);
+		m_direction.x = (sf::Keyboard::isKeyPressed(sf::Keyboard::A) * -1) /*+ (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) * 0)*/;
 
 	}
 	
