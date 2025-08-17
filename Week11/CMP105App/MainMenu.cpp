@@ -34,6 +34,12 @@ MainMenu::MainMenu(sf::RenderWindow* rw, Input* in, GameState* gs, sf::RenderTex
 	m_mmText.setFillColor(sf::Color::Red);
 
 	m_mmText.setPosition(0, 0);*/
+
+	if (!m_cloudTexture.loadFromFile("gfx/BalloonerSpriteSheet.png"))
+	{
+		std::cout << "player texture didnt load correctly" << std::endl;
+	}
+	
 }
 
 MainMenu::~MainMenu()

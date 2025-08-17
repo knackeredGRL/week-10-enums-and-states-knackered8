@@ -14,6 +14,9 @@ Player::Player(Input* in, sf::RenderTexture* rt)
 	m_gravity = sf::Vector2f(0, 1.8f) * m_scale;
 	m_jumpVector = sf::Vector2f(0, -2.0f) * m_scale;
 	m_audioManager = new AudioManager();
+
+	m_audioManager->addSound("sfx/cartoon-jump-6462.ogg", "jump");
+	m_audioManager->getSound("jump")->setVolume(40);
 }
 
 Player::~Player()

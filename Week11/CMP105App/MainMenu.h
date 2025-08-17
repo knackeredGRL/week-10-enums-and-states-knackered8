@@ -29,6 +29,8 @@ private:
 	MenuButton* m_controlsButton;
 	MenuButton* m_exitButton;
 	Controls* m_controls;
+	//GameObject cloud;
+	sf::Texture m_cloudTexture;
 	//GameState* gameState;
 	
 

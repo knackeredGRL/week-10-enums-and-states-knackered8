@@ -87,8 +87,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 
 	m_audioManager = new AudioManager();
 
-	m_audioManager->addSound("party-balloon-pop-323588.mp3", "pop");
-	m_audioManager->addSound("cartoon-jump-6462.mp3", "jump");
+	m_audioManager->addSound("sfx/party-balloon-pop-323588.ogg", "pop");
+	
 
 }
 

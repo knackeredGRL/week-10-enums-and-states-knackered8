@@ -7,6 +7,9 @@
 
 CollisionManager::CollisionManager()
 {
+	m_audioManager = new AudioManager();
+	m_audioManager->addSound("sfx/party-balloon-pop-323588.ogg", "pop");
+	m_audioManager->getSound("pop")->setVolume(50);
 }
 
 void CollisionManager::BulletEnemyCollision(BulletManager* bulletMan, EnemyManager* enemyMan)
@@ -23,6 +26,7 @@ void CollisionManager::BulletEnemyCollision(BulletManager* bulletMan, EnemyManag
 				bulletVector[i]->setAlive(false);
 				enemyVector[j]->setAlive(false);
 				GameManager::IncreaseScore(1);
+				m_audioManager->playSoundbyName("pop");
 			}
 		}
 	}
@@ -46,6 +50,7 @@ void CollisionManager::PlayerEnemyCollision(Player* player, EnemyManager* enemyM
 			{
 				enemyVector[i]->setAlive(false);
 				GameManager::TakeDamage(1);
+				m_audioManager->playSoundbyName("pop");
 			}
 		}
 	}

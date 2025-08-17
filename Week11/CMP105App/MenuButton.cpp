@@ -43,8 +43,8 @@ MenuButton::MenuButton(sf::RenderWindow* rw, Input* in, GameState* gs, sf::Rende
 
 
 
-	m_audioManager->addSound("sfx/click-345983.mp3", "click");
-	m_audioManager->getSound("click")->play();
+	m_audioManager->addSound("sfx/click-345983.ogg", "click");
+	
 
 }
 

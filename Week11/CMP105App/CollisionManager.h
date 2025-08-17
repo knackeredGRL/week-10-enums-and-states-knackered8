@@ -5,6 +5,7 @@ class Bullet;
 class BulletManager;
 class EnemyManager;
 #include "GameManager.h"
+#include "Framework/AudioManager.h"
 
 class CollisionManager
 {
@@ -17,7 +18,7 @@ public:
 
 
 private:
-
+	AudioManager* m_audioManager;
 
 
 };
