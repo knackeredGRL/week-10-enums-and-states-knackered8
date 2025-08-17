@@ -39,6 +39,13 @@ MenuButton::MenuButton(sf::RenderWindow* rw, Input* in, GameState* gs, sf::Rende
 
 	m_mmText.setPosition((position- size/2.f) +sf::Vector2f(10,35));
 
+	m_audioManager = new AudioManager();
+
+
+
+	m_audioManager->addSound("sfx/click-345983.mp3", "click");
+	m_audioManager->getSound("click")->play();
+
 }
 
 MenuButton::~MenuButton()
@@ -50,6 +57,8 @@ void MenuButton::handleInput(float dt)
 
 	if (m_collisionBox.contains(sf::Vector2f(input->getMouseX(), input->getMouseY())) && input->isLeftMousePressed())
 	{
+		m_audioManager->playSoundbyName("click");
+		m_audioManager->getSound("click")->play();
 		switch (m_buttonType)
 		{
 		case ButtonType::Start:

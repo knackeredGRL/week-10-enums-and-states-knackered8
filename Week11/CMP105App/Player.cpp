@@ -13,7 +13,7 @@ Player::Player(Input* in, sf::RenderTexture* rt)
 	m_scale = 200.0f;
 	m_gravity = sf::Vector2f(0, 1.8f) * m_scale;
 	m_jumpVector = sf::Vector2f(0, -2.0f) * m_scale;
-
+	m_audioManager = new AudioManager();
 }
 
 Player::~Player()
@@ -153,7 +153,7 @@ void Player::JumpCheck(const int& jumping)
 	{
 		return;
 	}
-
+	m_audioManager->playSoundbyName("jump");
 	m_stepVelocity = m_jumpVector;
 	m_isJumping = true;
 }

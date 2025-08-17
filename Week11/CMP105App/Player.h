@@ -1,6 +1,7 @@
 #pragma once
 #include "Framework/GameObject.h"
 #include "GameManager.h"
+#include "Framework/AudioManager.h"
 
 
 class Player :public GameObject
@@ -38,6 +39,6 @@ private:
 	bool m_invincibe = false;
 	float m_invincibleTimer = 0;
 	bool m_isFlipped = false;
-
+	AudioManager* m_audioManager;
 };
 

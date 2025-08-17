@@ -4,6 +4,7 @@
 #include "Framework//BaseLevel.h"
 class GameState;
 class Controls;
+#include "Framework/AudioManager.h"
 
 enum class ButtonType
 {
@@ -38,5 +39,6 @@ private:
 	int m_characterSize=0;
 	Controls* m_controls;
 	bool m_controlsDisplayed = false;
+	AudioManager* m_audioManager;
 };
 

@@ -84,6 +84,12 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 	m_enemyManager = new EnemyManager(in, m_rt);
 
 	m_uIManager = new UIManager();
+
+	m_audioManager = new AudioManager();
+
+	m_audioManager->addSound("party-balloon-pop-323588.mp3", "pop");
+	m_audioManager->addSound("cartoon-jump-6462.mp3", "jump");
+
 }
 
 Level::~Level()
