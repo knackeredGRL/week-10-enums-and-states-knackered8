@@ -133,7 +133,7 @@ void EnemyManager::update(float dt)
 		m_spawnTimer += dt;
 	}
 
-	if (m_spawnTimer >= 1)
+	if (m_spawnTimer >= 0.25)
 	{
 		canSpawn = true;
 		m_spawnTimer = 0;
@@ -159,9 +159,10 @@ void EnemyManager::handleInput(float dt)
 		//m_Enemy_vector.push_back(m_Enemy);
 
 	}*/
-	if (input->isPressed(sf::Keyboard::X))
+	if (canSpawn)
 	{
 		GetEnemy(sf::Vector2f(10, 10), sf::Vector2f(10, 10));
+		canSpawn = false;
 	}
 
 }

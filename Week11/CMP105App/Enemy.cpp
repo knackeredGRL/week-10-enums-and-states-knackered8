@@ -47,6 +47,17 @@ void Enemy::update(float dt)
 	m_velocity = (m_direction * m_speed);
 	setPosition(getPosition() + (m_velocity * dt));
 
+
+	if (isAlive())
+	{
+		m_lifeTimer += dt;
+	}
+
+	if (m_lifeTimer >= 10)
+	{
+		setAlive(false);
+	}
+
 }
 
 void Enemy::handleInput(float dt)
