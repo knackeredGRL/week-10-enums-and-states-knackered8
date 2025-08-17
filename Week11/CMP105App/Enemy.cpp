@@ -9,6 +9,7 @@ Enemy::Enemy(Input* in, sf::RenderTexture* rt, sf::Vector2f direction, sf::Vecto
 	setSize(sf::Vector2f(64, 64));
 	setOrigin(sf::Vector2f(64, 64) / 2.f);
 	setTexture(texture);
+	setTextureRect(sf::IntRect(31,0,16,33));
 	m_texture = texture;
 
 

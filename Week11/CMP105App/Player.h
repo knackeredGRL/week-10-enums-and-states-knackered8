@@ -37,6 +37,7 @@ private:
 	float m_jumpTimer = 0;
 	bool m_invincibe = false;
 	float m_invincibleTimer = 0;
+	bool m_isFlipped = false;
 
 };
 

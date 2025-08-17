@@ -3,7 +3,7 @@
 UIManager::UIManager()
 {
 	m_uiFont = std::make_shared<sf::Font>();
-	if (!m_uiFont->loadFromFile("font/arial.ttf"))
+	if (!m_uiFont->loadFromFile("font/editundo.ttf"))
 	{
 		std::cout << "error texture not loaded" << std::endl;
 	}

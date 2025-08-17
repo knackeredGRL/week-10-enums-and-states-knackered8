@@ -10,7 +10,7 @@ BulletManager::BulletManager(Input* in, sf::RenderTexture* rt, ShootPointer* sho
 
 	m_texture = new sf::Texture();
 
-	if (!m_texture->loadFromFile("gfx/Mushroom.png"))
+	if (!m_texture->loadFromFile("gfx/BalloonerSpriteSheet.png"))
 	{
 		std::cout << "player texture didnt load correctly" << std::endl;
 	}

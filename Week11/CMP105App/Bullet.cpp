@@ -9,6 +9,7 @@ Bullet::Bullet(Input* in, sf::RenderTexture* rt, sf::Vector2f direction, sf::Vec
 	setSize(sf::Vector2f(16, 16));
 	setOrigin(sf::Vector2f(16, 16) / 2.f);
 	setTexture(texture);
+	setTextureRect(sf::IntRect(10,68,5,10));
 	m_texture = texture;
 	
 
@@ -44,6 +45,8 @@ void Bullet::update(float dt)
 	m_direction = VectorHelper::normalise(m_direction);
 	m_velocity = (m_direction * m_speed);
 	setPosition(getPosition() +(m_velocity* dt));
+
+	setRotation(((atan2(m_direction.y, m_direction.x)) * 180 / 3.14159) + 90);
 
 	if (isAlive())
 	{

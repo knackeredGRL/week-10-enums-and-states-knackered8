@@ -12,8 +12,8 @@ MainMenu::MainMenu(sf::RenderWindow* rw, Input* in, GameState* gs, sf::RenderTex
 
 	m_controls = new Controls(window, input, gameState, m_rt,sf::Vector2f(800,200), sf::Vector2f(900,500));
 
-	m_startButton = new MenuButton(window,input,gameState,m_rt,sf::Vector2f(256,128), sf::Vector2f(200, 200),"Start Button",ButtonType::Start,46,m_controls);
-	m_controlsButton = new MenuButton(window, input, gameState, m_rt, sf::Vector2f(256, 128), sf::Vector2f(200, 500), "Controls Button", ButtonType::Controls,35, m_controls);
+	m_startButton = new MenuButton(window,input,gameState,m_rt,sf::Vector2f(256,128), sf::Vector2f(200, 200),"Start Button",ButtonType::Start,40,m_controls);
+	m_controlsButton = new MenuButton(window, input, gameState, m_rt, sf::Vector2f(256, 128), sf::Vector2f(200, 500), "Controls Button", ButtonType::Controls,30, m_controls);
 
 	m_exitButton = new MenuButton(window, input, gameState, m_rt, sf::Vector2f(256, 128), sf::Vector2f(200, 800), "Exit Button", ButtonType::Exit,46, m_controls);
 

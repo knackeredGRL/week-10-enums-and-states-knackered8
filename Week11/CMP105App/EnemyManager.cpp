@@ -10,7 +10,7 @@ EnemyManager::EnemyManager(Input* in, sf::RenderTexture* rt)
 
 	m_texture = new sf::Texture();
 
-	if (!m_texture->loadFromFile("gfx/Mushroom.png"))
+	if (!m_texture->loadFromFile("gfx/BalloonerSpriteSheet.png"))
 	{
 		std::cout << "player texture didnt load correctly" << std::endl;
 	}

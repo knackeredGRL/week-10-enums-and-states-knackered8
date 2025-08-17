@@ -4,7 +4,7 @@ Player::Player(Input* in, sf::RenderTexture* rt)
 {
 	setInput(in);
 	setRenderTexture(rt);
-	Setup("gfx/gobsmithSpriteSheet.png",true,sf::IntRect(0,0,32,32), sf::Vector2f(100,100), sf::Vector2f(100, 100));
+	Setup("gfx/BalloonerSpriteSheet.png",true,sf::IntRect(0,0,28,37), sf::Vector2f(100,100), sf::Vector2f(100, 100));
 
 
 
@@ -48,6 +48,16 @@ void Player::update(float dt)
 		m_invincibe = false;
 		m_invincibleTimer = 0;
 	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	{
+		setScale(-1.0f, 1.0f);
+	}
+	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	{
+		setScale(1.0f, 1.0f);
+	}
+
 
 }
 

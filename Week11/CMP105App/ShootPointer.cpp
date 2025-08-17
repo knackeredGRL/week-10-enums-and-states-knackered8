@@ -6,7 +6,7 @@ ShootPointer::ShootPointer(Input* in, sf::RenderTexture* rt, Player* pl)
 {
 	setInput(in);
 	setRenderTexture(rt);
-	Setup("gfx/icon.png", false, sf::IntRect(0, 0, 32, 32), sf::Vector2f(100, 100), sf::Vector2f(16, 16));
+	Setup("gfx/BalloonerSpriteSheet.png", true, sf::IntRect(0, 68, 9, 8), sf::Vector2f(100, 100), sf::Vector2f(16, 16));
 
 	m_playerPTR = pl;
 
@@ -30,7 +30,7 @@ void ShootPointer::update(float dt)
 	std::cout << m_direction.y << std::endl;
 	setPosition(m_playerPTR->getPosition() + (m_direction *50.f));
 	
-
+	setRotation(((atan2(m_direction.y, m_direction.x)) * 180 / 3.14159) +90);
 
 
 	if (VectorHelper::magnitude(FindMousePosition() -m_playerPTR->getPosition()) <= 50.f)

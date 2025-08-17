@@ -11,7 +11,7 @@ MenuButton::MenuButton(sf::RenderWindow* rw, Input* in, GameState* gs, sf::Rende
 	m_characterSize = charSize;
 	m_controls = controls;
 
-	if (!m_mmFont.loadFromFile("font/arial.ttf"))
+	if (!m_mmFont.loadFromFile("font/editundo.ttf"))
 	{
 		std::cout << "font not loaded" << std::endl;
 	}
@@ -25,7 +25,7 @@ MenuButton::MenuButton(sf::RenderWindow* rw, Input* in, GameState* gs, sf::Rende
 	m_mmText.setCharacterSize(m_characterSize); // in pixels, not points!
 	
 	// set the color
-	m_mmText.setFillColor(sf::Color::Green);
+	m_mmText.setFillColor(sf::Color::White);
 
 	
 
@@ -35,9 +35,9 @@ MenuButton::MenuButton(sf::RenderWindow* rw, Input* in, GameState* gs, sf::Rende
 
 	setPosition(position);
 
-	setFillColor(sf::Color::Red);
+	setFillColor(sf::Color::Black);
 
-	m_mmText.setPosition((position- size/2.f) +sf::Vector2f(0,25));
+	m_mmText.setPosition((position- size/2.f) +sf::Vector2f(10,35));
 
 }
 

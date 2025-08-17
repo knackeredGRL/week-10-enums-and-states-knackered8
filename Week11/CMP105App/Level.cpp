@@ -38,7 +38,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 	/*audio->addMusic("sfx/cantina.ogg", "cantina");*/
 	m_velocity = m_startingVelocity;
 
-	if (!m_pauseFont.loadFromFile("font/arial.ttf"))
+	if (!m_pauseFont.loadFromFile("font/editundo.ttf"))
 	{
 		std::cout << "font not loaded" << std::endl;
 	}
@@ -54,7 +54,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 	// set the color
 	m_pauseText.setFillColor(sf::Color::Red);
 
-	m_pauseText.setPosition(window->getSize().x / 2.f, window->getSize().y / 2.f);
+	m_pauseText.setPosition(window->getSize().x / 2.f -156, window->getSize().y / 2.f - 156);
 
 
 	m_timesStartedText.setFont(m_pauseFont); // font is a sf::Font
