@@ -16,6 +16,7 @@ class ShootPointer;
 class BulletManager;
 class CollisionManager;
 class EnemyManager;
+#include "GameManager.h"
 
 
 

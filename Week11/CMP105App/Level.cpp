@@ -155,6 +155,15 @@ void Level::update(float dt)
 	m_enemyManager->update(dt);
 
 	m_colManager->BulletEnemyCollision(m_bulletManager, m_enemyManager);
+	m_colManager->PlayerEnemyCollision(m_player, m_enemyManager);
+
+
+	if (GameManager::GetLives() == 0)
+	{
+		onBegin();
+		gameState->setCurrentState(State::MENU);
+		onEnd();
+	}
 }
 
 // Render level
@@ -200,6 +209,12 @@ void Level::onBegin()
 	m_bulletManager->ResetAllBullets();
 	m_bulletManager->SetCanShoot(true);
 	m_velocity = m_startingVelocity;
+	m_enemyManager->ResetAllEnemys();
+	m_enemyManager->SetCanSpawn(true);
+
+
+	GameManager::SetLives(3);
+	GameManager::SetScore(0);
 
 
 }

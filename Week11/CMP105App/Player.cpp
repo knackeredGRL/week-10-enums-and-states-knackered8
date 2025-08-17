@@ -38,6 +38,17 @@ void Player::update(float dt)
 	JumpTimer(dt);
 
 
+	if (m_invincibe)
+	{
+		m_invincibleTimer += dt;
+	}
+
+	if (m_invincibleTimer >= 2)
+	{
+		m_invincibe = false;
+		m_invincibleTimer = 0;
+	}
+
 }
 
 void Player::handleInput(float dt)
@@ -85,7 +96,12 @@ void Player::CheckGroundCollision(const float& dt)
 	if (m_collisionBox.contains(m_current_position.x, m_screen_height))
 	{
 		m_stepVelocity = sf::Vector2f(0, 0);
-		m_isJumping = false;
+		//m_isJumping = false;
+
+		GameManager::TakeDamage(1);
+		m_invincibe = true;
+		setPosition(m_start_position);
+
 	}
 
 	if (m_collisionBox.contains(m_current_position.x, 0))

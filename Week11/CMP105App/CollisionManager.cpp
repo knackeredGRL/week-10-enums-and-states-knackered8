@@ -22,6 +22,7 @@ void CollisionManager::BulletEnemyCollision(BulletManager* bulletMan, EnemyManag
 			{
 				bulletVector[i]->setAlive(false);
 				enemyVector[j]->setAlive(false);
+				GameManager::IncreaseScore(1);
 			}
 		}
 	}
@@ -32,9 +33,21 @@ void CollisionManager::BulletEnemyCollision(BulletManager* bulletMan, EnemyManag
 
 }
 
-void CollisionManager::PlayerEnemyCollision(Player* player, Enemy* enemy)
+void CollisionManager::PlayerEnemyCollision(Player* player, EnemyManager* enemyMan)
 {
+	std::vector<Enemy*> enemyVector = enemyMan->GetActivePool();
 
-
+	for (int i = 0; i < enemyVector.size(); i++)
+	{
+		if (enemyVector[i]->getCollisionBox().intersects(player->getCollisionBox()))
+		{
+			
+			if (!player->GetInvincible())
+			{
+				enemyVector[i]->setAlive(false);
+				GameManager::TakeDamage(1);
+			}
+		}
+	}
 
 }

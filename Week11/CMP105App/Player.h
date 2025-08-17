@@ -1,5 +1,6 @@
 #pragma once
 #include "Framework/GameObject.h"
+#include "GameManager.h"
 
 
 class Player :public GameObject
@@ -21,6 +22,8 @@ public:
 	void JumpCheck(const int& jumping);
 	void JumpTimer(const float& dt);
 
+	const bool& GetInvincible() { return m_invincibe; }
+	
 
 private:
 	float m_speed = 100;
@@ -32,6 +35,8 @@ private:
 	sf::Vector2f m_jumpVector;
 	int m_jumping = 0;
 	float m_jumpTimer = 0;
+	bool m_invincibe = false;
+	float m_invincibleTimer = 0;
 
 };
 
