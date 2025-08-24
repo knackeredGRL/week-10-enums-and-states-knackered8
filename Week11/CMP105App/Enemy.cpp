@@ -18,7 +18,7 @@ Enemy::Enemy(Input* in, sf::RenderTexture* rt, sf::Vector2f direction, sf::Vecto
 	//setTextureRect(intRect);
 	//}
 
-	setPosition(sf::Vector2f(100, 100));
+	//setPosition(sf::Vector2f(100, 100));
 
 
 
@@ -29,6 +29,10 @@ Enemy::Enemy(Input* in, sf::RenderTexture* rt, sf::Vector2f direction, sf::Vecto
 	setPosition(m_current_position);
 
 	m_alive = false;
+
+
+	m_offset = position;
+	m_tempPosition = position;
 
 }
 
@@ -44,9 +48,19 @@ void Enemy::update(float dt)
 {
 	m_collisionBox = getGlobalBounds();
 
+	colTest.setFillColor(sf::Color::White);
+	colTest.setPosition(m_collisionBox.left, m_collisionBox.top);
+	colTest.setSize(sf::Vector2f(m_collisionBox.width, m_collisionBox.height));
+	
+	m_elaspsedTime += dt;
+	m_tempPosition.y += 50* sin(m_elaspsedTime) *dt;
+
+
+
 	m_direction = VectorHelper::normalise(m_direction);
 	m_velocity = (m_direction * m_speed);
-	setPosition(getPosition() + (m_velocity * dt));
+	m_tempPosition += m_velocity * dt;
+	setPosition(  m_tempPosition);
 
 
 	if (isAlive())
@@ -68,6 +82,7 @@ void Enemy::handleInput(float dt)
 void Enemy::render()
 {
 	m_rt->draw(*this);
+	//m_rt->draw(colTest);
 }
 
 void Enemy::ResetEnemy()

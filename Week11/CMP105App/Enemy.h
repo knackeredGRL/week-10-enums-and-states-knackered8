@@ -34,11 +34,25 @@ public:
 
 	const bool& CheckCollisionArea(const sf::FloatRect& floatRect);
 
+
+	void SetTempPosition(const sf::Vector2f& tempPos)
+	{
+		m_tempPosition = tempPos;
+	}
+
+	/*const sf::FloatRect& GetCollisionBox()
+	{
+		return m_collisionBox;
+	}*/
+
 private:
 	float m_health = 3;
 	float m_speed = 200;
 	float m_lifeTimer = 0;
 	bool m_lifeTimerEnded = false;
-
+	sf::Vector2f m_offset;
+	sf::Vector2f m_tempPosition;
+	float m_elaspsedTime;
+	sf::RectangleShape colTest;
 };
 

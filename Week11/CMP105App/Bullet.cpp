@@ -42,6 +42,11 @@ Bullet::~Bullet()
 
 void Bullet::update(float dt)
 {
+	colTest.setFillColor(sf::Color::White);
+	colTest.setPosition(m_collisionBox.left, m_collisionBox.top);
+	colTest.setSize(sf::Vector2f(m_collisionBox.width, m_collisionBox.height));
+
+
 	m_direction = VectorHelper::normalise(m_direction);
 	m_velocity = (m_direction * m_speed);
 	setPosition(getPosition() +(m_velocity* dt));
@@ -70,6 +75,7 @@ void Bullet::handleInput(float dt)
 void Bullet::render()
 {
 	m_rt->draw(*this);
+	//m_rt->draw(colTest);
 }
 
 void Bullet::ResetBullet()

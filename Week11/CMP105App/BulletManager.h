@@ -20,7 +20,7 @@ public:
 
 	void RenderBullets();
 
-	std::vector<Bullet*> GetActivePool()
+	std::vector<Bullet*>& GetActivePool()
 	{
 		return m_active;
 	}

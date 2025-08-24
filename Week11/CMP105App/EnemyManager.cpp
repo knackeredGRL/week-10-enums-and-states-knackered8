@@ -25,7 +25,7 @@ EnemyManager::EnemyManager(Input* in, sf::RenderTexture* rt)
 
 	m_pool = new Enemy[100];
 	for (int i = 0; i < m_poolSizeMax; i++) {
-		new (&m_pool[i]) Enemy(input, m_rt, sf::Vector2f(0, 0), sf::Vector2f(0, 0), m_texture);
+		new (&(m_pool[i])) Enemy(input, m_rt, sf::Vector2f(0, 0), sf::Vector2f(0, 0), m_texture);
 	}
 }
 
@@ -101,6 +101,7 @@ Enemy* EnemyManager::GetEnemy(const sf::Vector2f& direction, const sf::Vector2f&
 
 
 		m_pool[i].setPosition(sf::Vector2f(m_randomXPos,m_randomYPos));
+		m_pool[i].SetTempPosition(sf::Vector2f(m_randomXPos, m_randomYPos));
 		m_pool[i].SetDirection(sf::Vector2f(m_randomXDir, m_randomYDir));
 		m_pool[i].setAlive(true);
 		m_pool[i].ResetEnemy();

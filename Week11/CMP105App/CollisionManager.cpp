@@ -14,16 +14,19 @@ CollisionManager::CollisionManager()
 
 void CollisionManager::BulletEnemyCollision(BulletManager* bulletMan, EnemyManager* enemyMan)
 {
-	std::vector<Bullet*> bulletVector = bulletMan->GetActivePool();
-	std::vector<Enemy*> enemyVector = enemyMan->GetActivePool();
+	std::vector<Bullet*>& bulletVector = bulletMan->GetActivePool();
+	std::vector<Enemy*>& enemyVector = enemyMan->GetActivePool();
 
 	for (int i = 0; i < bulletVector.size(); i++)
 	{
 		for (int j = 0; j < enemyVector.size(); j++)
 		{
-			if (bulletVector[i]->getCollisionBox().intersects(enemyVector[j]->getCollisionBox()))
+			if (bulletVector[i]->GetCollisionBox().intersects(enemyVector[j]->GetCollisionBox()))
 			{
 				bulletVector[i]->setAlive(false);
+				std::cout << bulletVector.size() << std::endl;
+				std::cout << enemyVector.size() << std::endl;
+
 				enemyVector[j]->setAlive(false);
 				GameManager::IncreaseScore(1);
 				m_audioManager->playSoundbyName("pop");
@@ -43,7 +46,7 @@ void CollisionManager::PlayerEnemyCollision(Player* player, EnemyManager* enemyM
 
 	for (int i = 0; i < enemyVector.size(); i++)
 	{
-		if (enemyVector[i]->getCollisionBox().intersects(player->getCollisionBox()))
+		if (enemyVector[i]->GetCollisionBox().intersects(player->GetCollisionBox()))
 		{
 			
 			if (!player->GetInvincible())

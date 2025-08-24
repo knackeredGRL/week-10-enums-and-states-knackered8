@@ -20,7 +20,7 @@ public:
 
 	void RenderEnemys();
 
-	std::vector<Enemy*> GetActivePool()
+	std::vector<Enemy*>& GetActivePool()
 	{
 		return m_active;
 	}

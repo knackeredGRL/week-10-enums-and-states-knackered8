@@ -52,6 +52,12 @@ public:
 
 	void Setup(const std::string& texturePath,const bool& isSpriteSheet, const sf::IntRect& intRect, const sf::Vector2f& pos, const sf::Vector2f& size);
 
+	const sf::FloatRect& GetCollisionBox()
+	{
+		return m_collisionBox;
+	}
+
+
 protected:
 	// Sprite properties
 	sf::Vector2f m_velocity;
