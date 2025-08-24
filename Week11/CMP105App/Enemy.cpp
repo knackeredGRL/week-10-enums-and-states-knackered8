@@ -54,13 +54,22 @@ void Enemy::update(float dt)
 	
 	m_elaspsedTime += dt;
 	m_tempPosition.y += 100* sin(m_elaspsedTime*3) *dt;
-	//m_tempPosition.x += 200 * cos(m_elaspsedTime) * dt;
-
+	//m_tempPosition.x += 100 * cos(m_elaspsedTime) * dt;
+	
 
 	m_direction = VectorHelper::normalise(m_direction);
+
+	m_rotation = (atan2(m_direction.y, m_direction.x))*180.f /PI +90;
+	setRotation(m_rotation);
+	//m_direction.x = log10(m_direction.x);
+	//m_direction.y = log10(m_direction.y);
 	m_velocity = (m_direction * m_speed);
 	m_tempPosition += (m_velocity * dt);
+	//m_tempPosition.x = log10(m_tempPosition.x);
+	//m_tempPosition.y = log10(m_tempPosition.y);
 	setPosition(m_tempPosition);
+
+
 
 
 	if (isAlive())

@@ -5,7 +5,7 @@
 AudioManager::AudioManager()
 {
 	music.setLoop(true);
-	music.setVolume(50);
+	music.setVolume(0);
 }
 
 AudioManager::~AudioManager()

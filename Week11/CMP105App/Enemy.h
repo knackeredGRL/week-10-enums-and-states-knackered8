@@ -54,5 +54,7 @@ private:
 	sf::Vector2f m_tempPosition = sf::Vector2f(0,0);
 	float m_elaspsedTime = 0;
 	sf::RectangleShape colTest;
+	float m_rotation = 0;
+	const float PI = 3.1415926535897932;
 };
 
