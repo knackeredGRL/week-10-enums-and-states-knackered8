@@ -101,6 +101,7 @@ Enemy* EnemyManager::GetEnemy(const sf::Vector2f& direction, const sf::Vector2f&
 
 
 		m_pool[i].setPosition(sf::Vector2f(m_randomXPos,m_randomYPos));
+		m_pool[i].SetStartPosition(sf::Vector2f(m_randomXPos, m_randomYPos));
 		m_pool[i].SetTempPosition(sf::Vector2f(m_randomXPos, m_randomYPos));
 		m_pool[i].SetDirection(sf::Vector2f(m_randomXDir, m_randomYDir));
 		m_pool[i].setAlive(true);

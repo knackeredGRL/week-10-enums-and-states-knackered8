@@ -53,14 +53,14 @@ void Enemy::update(float dt)
 	colTest.setSize(sf::Vector2f(m_collisionBox.width, m_collisionBox.height));
 	
 	m_elaspsedTime += dt;
-	m_tempPosition.y += 50* sin(m_elaspsedTime) *dt;
-
+	m_tempPosition.y += 100* sin(m_elaspsedTime*3) *dt;
+	//m_tempPosition.x += 200 * cos(m_elaspsedTime) * dt;
 
 
 	m_direction = VectorHelper::normalise(m_direction);
 	m_velocity = (m_direction * m_speed);
-	m_tempPosition += m_velocity * dt;
-	setPosition(  m_tempPosition);
+	m_tempPosition += (m_velocity * dt);
+	setPosition(m_tempPosition);
 
 
 	if (isAlive())

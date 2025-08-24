@@ -57,6 +57,11 @@ public:
 		return m_collisionBox;
 	}
 
+	void SetStartPosition(const sf::Vector2f& startPos)
+	{
+		m_start_position = startPos;
+	}
+
 
 protected:
 	// Sprite properties

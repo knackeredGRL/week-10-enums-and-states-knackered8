@@ -47,12 +47,12 @@ public:
 
 private:
 	float m_health = 3;
-	float m_speed = 200;
+	float m_speed = 100;
 	float m_lifeTimer = 0;
 	bool m_lifeTimerEnded = false;
-	sf::Vector2f m_offset;
-	sf::Vector2f m_tempPosition;
-	float m_elaspsedTime;
+	sf::Vector2f m_offset = sf::Vector2f(0, 0);
+	sf::Vector2f m_tempPosition = sf::Vector2f(0,0);
+	float m_elaspsedTime = 0;
 	sf::RectangleShape colTest;
 };
 
