@@ -19,6 +19,10 @@ Player::Player(Input* in, sf::RenderTexture* rt)
 	m_audioManager->getSound("jump")->setVolume(40);
 }
 
+Player::Player()
+{
+}
+
 Player::~Player()
 {
 }

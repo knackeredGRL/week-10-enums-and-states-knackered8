@@ -8,6 +8,10 @@ class Player :public GameObject
 {
 public:
 	Player(Input* in, sf::RenderTexture* rt);
+
+
+	Player(); 
+
 	~Player();
 	void update(float dt );
 	void handleInput(float dt);
@@ -26,7 +30,7 @@ public:
 	const bool& GetInvincible() { return m_invincibe; }
 	
 
-private:
+protected:
 	float m_speed = 100;
 	float m_acceleration = 2000.f;sf::Vector2f m_direction = sf::Vector2f(0, 0);
 	float m_scale = 200.f;

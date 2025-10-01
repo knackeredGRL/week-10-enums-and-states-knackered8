@@ -176,11 +176,13 @@
     <ClCompile Include="Framework\VectorHelper.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelTopDown.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="MovingCloud.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerTopDown.cpp" />
     <ClCompile Include="ShootPointer.cpp" />
     <ClCompile Include="UIManager.cpp" />
   </ItemGroup>
@@ -208,10 +210,12 @@
     <ClInclude Include="Framework\VectorHelper.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelTopDown.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MenuButton.h" />
     <ClInclude Include="MovingCloud.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerTopDown.h" />
     <ClInclude Include="ShootPointer.h" />
     <ClInclude Include="UIManager.h" />
   </ItemGroup>
