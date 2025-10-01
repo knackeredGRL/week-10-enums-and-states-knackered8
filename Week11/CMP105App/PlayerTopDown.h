@@ -1,5 +1,6 @@
 #pragma once
 #include "Player.h"
+
 class PlayerTopDown : public Player
 {
 public: 
@@ -10,7 +11,8 @@ public:
 	void render();
 
 
-
+private:
+	
 
 };
 

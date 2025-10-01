@@ -1,5 +1,6 @@
 #include "PlayerTopDown.h"
 
+
 PlayerTopDown::PlayerTopDown(Input* in, sf::RenderTexture* rt)
 {
 	setInput(in);

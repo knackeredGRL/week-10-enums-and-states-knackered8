@@ -6,6 +6,10 @@
 
 class PlayerTopDown;
 
+class NPC;
+
+class TextBox;
+
 
 
 class LevelTopDown : public BaseLevel
@@ -23,7 +27,8 @@ class LevelTopDown : public BaseLevel
 
 	private:
 		PlayerTopDown* m_player;
-
+		NPC* m_npc;
+		TextBox* m_txtBox;
 
 
 

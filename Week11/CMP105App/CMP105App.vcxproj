@@ -181,9 +181,11 @@
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="MovingCloud.cpp" />
+    <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerTopDown.cpp" />
     <ClCompile Include="ShootPointer.cpp" />
+    <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="UIManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -214,9 +216,11 @@
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MenuButton.h" />
     <ClInclude Include="MovingCloud.h" />
+    <ClInclude Include="NPC.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerTopDown.h" />
     <ClInclude Include="ShootPointer.h" />
+    <ClInclude Include="TextBox.h" />
     <ClInclude Include="UIManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

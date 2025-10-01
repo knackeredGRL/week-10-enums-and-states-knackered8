@@ -1,5 +1,7 @@
 #include "LevelTopDown.h"
 #include "PlayerTopDown.h"
+#include "NPC.h"
+#include "TextBox.h"
 
 LevelTopDown::LevelTopDown(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud, sf::RenderTexture* renderTexture)
 {
@@ -10,7 +12,8 @@ LevelTopDown::LevelTopDown(sf::RenderWindow* hwnd, Input* in, GameState* gs, Aud
 	m_rt = renderTexture;
 
 	m_player = new PlayerTopDown(in, m_rt);
-
+	m_npc = new NPC(in, renderTexture, sf::Vector2f(0,1), sf::Vector2f(300,200), "gfx/BalloonerSpriteSheet.png");
+	m_txtBox = new TextBox(in,renderTexture, sf::Vector2f(300,100),sf::Vector2f(100,600), "gfx/BalloonerSpriteSheet.png");
 
 }
 
@@ -55,6 +58,8 @@ void LevelTopDown::update(float dt)
 
 	m_player->handleInput(dt);
 	m_player->update(dt);
+	m_npc->update(dt);
+	m_txtBox->update(dt);
 }
 
 void LevelTopDown::render()
@@ -64,6 +69,8 @@ void LevelTopDown::render()
 
 	
 	m_rt->draw(*m_player);
+	m_npc->render();
+	m_txtBox->render();
 	/*m_rt->draw(*ball);
 	m_rt->draw(m_timesStartedText);*/
 	
