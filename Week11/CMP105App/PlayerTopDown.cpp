@@ -18,8 +18,8 @@ void PlayerTopDown::update(float dt)
 	m_current_position = getPosition();
 
 	setPosition(getPosition() + (CalculateVelocity(dt, m_direction) * dt));
-
-
+	m_collisionBox = getGlobalBounds();
+	setCollisionBox(m_collisionBox);
 	if (m_invincibe)
 	{
 		m_invincibleTimer += dt;
@@ -39,6 +39,9 @@ void PlayerTopDown::update(float dt)
 	{
 		setScale(1.0f, 1.0f);
 	}
+
+	std::cout << " Player collider X " << GetCollisionBox().left << " Player collider Y " << GetCollisionBox().top << std::endl;
+	std::cout << " Player position X " << getPosition().x << " Player position Y " << getPosition().y << std::endl;
 }
 
 void PlayerTopDown::handleInput(float dt)

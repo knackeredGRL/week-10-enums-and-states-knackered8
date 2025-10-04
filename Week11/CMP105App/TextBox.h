@@ -13,11 +13,21 @@ public:
 
     void render();
 
+    const bool& GetVisible()
+    {
+        return m_visible;
+    }
+
+    void SetVisible(bool vis)
+    {
+        m_visible = vis;
+    }
+
 private:
     //RectangleShape m_box;
     sf::Text m_txt;
     sf::Font m_font;
-
+    bool m_visible = false;
 
 
 

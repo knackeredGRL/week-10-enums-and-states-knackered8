@@ -15,7 +15,7 @@ TextBox::TextBox(Input* in, sf::RenderTexture* rt, sf::Vector2f size, sf::Vector
 	m_txt.setString(" ");
 
 	// set the character size
-	m_txt.setCharacterSize(32); // in pixels, not points!
+	m_txt.setCharacterSize(72); // in pixels, not points!
 
 	// set the color
 	m_txt.setFillColor(sf::Color::White);
@@ -53,6 +53,11 @@ void TextBox::update(float dt)
 
 void TextBox::render()
 {
-	m_rt->draw(*this);
-	m_rt->draw(m_txt);
+	if (m_visible)
+	{
+		m_rt->draw(*this);
+		m_rt->draw(m_txt);
+	}
+
+	
 }
