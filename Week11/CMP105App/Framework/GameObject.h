@@ -52,10 +52,10 @@ public:
 
 	void Setup(const std::string& texturePath,const bool& isSpriteSheet, const sf::IntRect& intRect, const sf::Vector2f& pos, const sf::Vector2f& size);
 
-	const sf::FloatRect& GetCollisionBox()
+	/*const sf::FloatRect& GetCollisionBox()
 	{
 		return m_collisionBox;
-	}
+	}*/
 
 	void SetStartPosition(const sf::Vector2f& startPos)
 	{

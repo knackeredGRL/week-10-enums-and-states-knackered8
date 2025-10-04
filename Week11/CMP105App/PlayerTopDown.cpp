@@ -40,7 +40,7 @@ void PlayerTopDown::update(float dt)
 		setScale(1.0f, 1.0f);
 	}
 
-	std::cout << " Player collider X " << GetCollisionBox().left << " Player collider Y " << GetCollisionBox().top << std::endl;
+	std::cout << " Player collider X " << getCollisionBox().left << " Player collider Y " << getCollisionBox().top << std::endl;
 	std::cout << " Player position X " << getPosition().x << " Player position Y " << getPosition().y << std::endl;
 }
 

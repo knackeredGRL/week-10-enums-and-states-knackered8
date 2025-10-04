@@ -21,7 +21,7 @@ void CollisionManager::BulletEnemyCollision(BulletManager* bulletMan, EnemyManag
 	{
 		for (int j = 0; j < enemyVector.size(); j++)
 		{
-			if (bulletVector[i]->GetCollisionBox().intersects(enemyVector[j]->GetCollisionBox()))
+			if (bulletVector[i]->getCollisionBox().intersects(enemyVector[j]->getCollisionBox()))
 			{
 				bulletVector[i]->setAlive(false);
 				std::cout << bulletVector.size() << std::endl;
@@ -46,7 +46,7 @@ void CollisionManager::PlayerEnemyCollision(Player* player, EnemyManager* enemyM
 
 	for (int i = 0; i < enemyVector.size(); i++)
 	{
-		if (enemyVector[i]->GetCollisionBox().intersects(player->GetCollisionBox()))
+		if (enemyVector[i]->getCollisionBox().intersects(player->getCollisionBox()))
 		{
 			
 			if (!player->GetInvincible())

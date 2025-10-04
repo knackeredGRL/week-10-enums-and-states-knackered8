@@ -55,6 +55,7 @@ void NPC::update(float dt, const sf::FloatRect& otherCol)
 {
 	m_collisionBox = getGlobalBounds();
 	setCollisionBox(m_collisionBox);
+	
 	m_txtBox->update(dt);
 	
 	Collision(otherCol);
@@ -93,7 +94,7 @@ void NPC::render()
 void NPC::Collision(const sf::FloatRect& otherCollider)
 {
 	//std::cout << GetCollisionBox().intersects(otherCollider) << std::endl;
-	if (GetCollisionBox().intersects(otherCollider) && sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+	if (getCollisionBox().intersects(otherCollider) && sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 	{
 		m_txtBox->SetVisible(true);
 		
